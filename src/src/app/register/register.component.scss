@@ -1,0 +1,97 @@
+.right-liga{
+    animation: move-left-right 4s infinite;
+}
+
+.background {
+    background-image: url('/assets/img/background2.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@keyframes move-left-right {
+    0% {
+        transform: translateX(-10px);
+    }
+
+    50% {
+        transform: translateX(10px);
+    }
+
+    100% {
+        transform: translateX(-10px);
+    }
+}
+
+.container{
+    padding-top: 0;
+    margin-top: 30px;
+}
+
+.row-liga{
+    margin-top: 30px;
+    width: 100%;
+}
+
+.card-liga{
+    border-radius: 30px;
+    background: rgb(255 255 255 / 3%);
+}
+
+.text-liga{
+    text-align: right;
+    width: 100%;
+    font-weight: 100;
+}
+
+.input-liga{
+    font-size: medium;
+}
+
+.group-liga{
+    margin-bottom: 20px;
+}
+
+.btn-liga{
+    color: black;
+    font-size: large;
+    font-weight: 700;
+    border-radius: 0;
+    font-family: 'Raleway', sans-serif;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-right: 6vw;
+    padding-left: 6vw;
+    margin: auto auto;
+}
+
+.row-liga{
+    margin-top: 50px;
+}
+
+.center-liga{
+    width: 80%;
+    margin-top: 50px;
+    margin-bottom: 50px;
+}
+
+.align-center{
+    text-align: center;
+}
+
+.logo-img{
+    border-radius: 0 !important;
+    margin: auto auto !important;
+    position: relative !important;
+    width: 70% !important;
+    padding: 1rem;
+}
+
+.header-liga{
+    padding: 10px;
+    text-align: center;
+    background-color: rgb(255 255 255 / 5%) !important;
+}
+
+.form-liga{
+    margin: auto auto;
+}

@@ -1,0 +1,30 @@
+
+.background {
+    background-image: url('/assets/img/background3.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.bg-liga{
+    max-width: 90vw;
+    width: 90vh;
+    height: auto !important;
+}
+
+.btn-liga{
+    color: black;
+    font-size: large;
+    font-weight: 700;
+    border-radius: 0;
+    font-family: 'Raleway', sans-serif;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
+
+.btn, .navbar .navbar-nav > a.btn{
+    background-image: none;
+}
+
+.list-message{
+    color: black;
+}
