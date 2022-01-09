@@ -4,7 +4,6 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
-const config = require('./settings/settings');
 const app = express();
 
 app.use(express.json());
@@ -19,7 +18,7 @@ if (process.env.NODE_ENV == "Prd") {
 } 
 
 // Connect To Database 
-mongoose.connect(config.database, 
+mongoose.connect(process.env.DB_URI, 
     {   
         useNewUrlParser: true,
         useUnifiedTopology: true 
@@ -28,12 +27,12 @@ mongoose.connect(config.database,
 
 // On Connection
 mongoose.connection.on('connected', () => {
-    console.log('📦 Tigre connected to DB ' + config.dbHost)
+    console.log('📦 Tigre connected to DB ' + process.env.DB_HOST)
 });
 
 // On Error
 mongoose.connection.on('error', (err) => {
-    console.log('📦 Tigre DB connection error ' + config.dbHost)
+    console.log('📦 Tigre DB connection error ' + process.env.DB_HOST)
 });
 
 const users = require('./routes/users');
