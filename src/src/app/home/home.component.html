@@ -1,63 +1,9 @@
 <div class="wrapper background" (scroll)="onScroll($event)">
   <div class="page-header">
     <div class="container">
-      <div class="content-center img-liga">
-        <!-- <div class="animate__animated animate__heartBeat animate__slow"> -->
-          <img id="image1" class="bg-blob bg-liga-first animate__animated animate__backInDown" src="assets/img/img1.png" />
-          <!-- </div> -->
-      </div>
-      <div class="content-center space-liga">
-        <div class="animate__animated animate__fadeOutDown animate__infinite animate__slow">
-          <img class="pulse" src="assets/img/mouse.png"/>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="space-110"></div>
-  <div id="target1" class="page-header" #target1>
-    <div class="container">
-      <div class="content-center img-liga">
-        <!-- <div class="animate__animated animate__flash animate__slower animate__repeat-2"> -->
-        <img [ngStyle]="{'opacity': image2Opacity}" id="image2" class="bg-blob bg-liga" src="assets/img/img2.png" style="position: absolute;" />
-        <img [ngStyle]="{'opacity': image2Transparency}" class="bg-blob bg-liga" src="assets/img/img24.png" style="position: relative; z-index: 100;" />
-
-        <!-- </div> -->
-      </div>
-      <div class="content-center space-liga">
-        <div class="animate__animated animate__fadeOutDown animate__infinite animate__slow">
-          <img class="pulse" src="assets/img/mouse.png"/>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="space-110"></div>
-  <div id="target2" class="page-header" #target2>
-    <div class="container">
-      <div class="content-center img-liga">
-        <!-- <div class="animate__animated animate__flash animate__fast animate__infinite"> -->
-        <img [ngStyle]="{'opacity': image3Opacity}" id="image3"  class="bg-blob bg-liga" src="assets/img/img3.png" style="position: absolute;" />
-        <img [ngStyle]="{'opacity': image3Transparency}" class="bg-blob bg-liga" src="assets/img/img34.png" style="position: relative; z-index: 100;" />
-
-        <!-- </div> -->
-      </div>
-      <div class="content-center space-liga">
-        <div class="animate__animated animate__fadeOutDown animate__infinite animate__slow">
-          <img class="pulse" src="assets/img/mouse2.png"/>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="space-110"></div>
-  <div id="target3" class="page-header" #target3>
-    <div class="container">
-      <div class="content-center img-liga">
-        <!-- <div class="animate__animated animate__heartBeat animate__slow animate__infinite"> -->
-        <img [ngStyle]="{'opacity': opacityZero}"  id="image4" class="bg-blob bg-liga-last" src="assets/img/img4.png" />
-        <!-- </div> -->
-      </div>
       <div class="content-center space-liga">
         <a class="btn btn-neutral btn-lg btn-liga" [routerLink]="'/register'">
-          INGRESAR
+          Registrar
         </a>
       </div>
     </div>

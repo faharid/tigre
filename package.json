@@ -5,8 +5,8 @@
   "main": "app.js",
   "scripts": {
     "prestart": "npm install && npm audit fix --force",
-    "start": "cross-env NODE_ENV=Prd node app.js",
-    "start:dev": "cross-env NODE_ENV=Dev node app.js",
+    "start": "cross-env NODE_ENV=prod node app.js",
+    "start:dev": "cross-env NODE_ENV=dev node app.js",
     "dev": "nodemon --exec 'npm run-script start:dev'"
   },
   "engines": {

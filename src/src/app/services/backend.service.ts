@@ -1,46 +1,36 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import 'rxjs/add/operator/map';
-
+import { environment } from "../../environments/environment";
 
 @Injectable()
 export class BackendService {
-    isDev: boolean = false;
-    isCloud: boolean = true;
-    urlCloud = 'https://soymartinezborja.com:3001/';
-    urlLocal = 'https://localhost:3001/';
   constructor(private http:HttpClient) {
   }
 
-  getHincha(req) {
+  getUser(id) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    const ep = this.prepEndpoint('hinchas/');
-    return this.http.post(ep, req, httpOptions)
+    const ep = this.prepEndpoint(`/users/${id}`);
+    return this.http.get(ep, httpOptions)
       .map((res: any) => res)
   }
 
-  createHincha(req) {
+  register(req) {
     const httpOptions = {
       headers: new HttpHeaders({
         'Content-Type':  'application/json'
       })
     };
-    const ep = this.prepEndpoint('hinchas/create');
-    return this.http.post(ep, req, httpOptions)
+    const ep = this.prepEndpoint(`/users`);
+    return this.http.put(ep, req, httpOptions)
       .map((res: any) => res)
   }
 
   prepEndpoint(ep) {
-    if(this.isDev) {
-      return this.urlLocal + ep;
-    } else {
-      if(this.isCloud){
-        return this.urlCloud + ep; 
-      }
-    }
+    return environment.api_url + `api/${environment.env}` + ep; 
   }
 }

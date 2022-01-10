@@ -1,7 +1,7 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from '@angular/common/http';
 import { TagInputModule } from "ngx-chips";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations"; // this is needed!
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { NgModule } from "@angular/core";
 import { RouterModule } from "@angular/router";
 import { CommonModule } from "@angular/common";
@@ -24,7 +24,6 @@ import { TimepickerModule } from "ngx-bootstrap/timepicker";
 import { CustomFormsModule } from 'ngx-custom-validators';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 
-
 import { LazyLoadImageModule } from 'ng-lazyload-image'; 
 
 import { AppRoutingModule } from "./app-routing.module";
@@ -40,6 +39,8 @@ import { FinishComponent } from "./finish/finish.component";
 import { RegisterComponent } from "./register/register.component";
 import { NotifierModule, NotifierOptions } from "angular-notifier";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+import { NavbarComponent } from "./navbar/navbar.component";
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -95,8 +96,10 @@ const agoraConfig: AgoraConfig = {
     RegisterComponent,
     FinishComponent,
     AppComponent,
+    NavbarComponent
   ],
   imports: [
+    BrowserModule,
     HttpClientModule,
     CommonModule,
     FormsModule,

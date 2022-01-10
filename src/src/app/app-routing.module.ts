@@ -9,14 +9,13 @@ import { BroadcastComponent } from "./broadcast/broadcast.component";
 import { AuthGuard } from './services/guards/auth.guard';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'finish', pathMatch: 'full' },
-  //{ path: 'home', component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   //{ path: 'live', component: LiveComponent },
-  //{ path: 'register', component: RegisterComponent },
-  { path: 'finish', component: FinishComponent },
+  { path: 'register', component: RegisterComponent },
   //{ path: 'stream', component: StreamComponent },
   //{ path: 'broadcast', component: BroadcastComponent },
-  { path: '**', redirectTo: 'finish', pathMatch: "full"}
+  { path: '**', redirectTo: 'home', pathMatch: "full"}
 ];
 
 @NgModule({

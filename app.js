@@ -9,9 +9,9 @@ const app = express();
 app.use(express.json());
 app.use(compression());
 
-if (process.env.NODE_ENV == "Prd") {
+if (process.env.NODE_ENV == "prod") {
     require("dotenv").config({ path: ".env.prd" });
-} else if (process.env.NODE_ENV == "Dev") {
+} else if (process.env.NODE_ENV == "dev") {
     require("dotenv").config({ path: ".env.dev" });
 } else {
     require("dotenv").config({ path: ".env.dev" });

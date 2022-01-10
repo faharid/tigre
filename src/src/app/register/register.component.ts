@@ -57,17 +57,16 @@ export class RegisterComponent implements OnInit {
         this.valForm.controls[c].markAsTouched();
     }
     if (this.valForm.valid) {
-      const hincha = {
+      const user = {
           email: this.valForm.value.email,
           nombre: this.valForm.value.nombre, 
           apellido: this.valForm.value.apellido,
           cedula: this.valForm.value.cedula,
           numero: this.valForm.value.numero
       };
-      this.backendService.createHincha(hincha).subscribe(data => {
+      this.backendService.register(user).subscribe(data => {
         if (data.success) { 
-          //this.router.navigate(['/stream/' + data.id])
-          this.router.navigate(['/finish'])
+          this.router.navigate(['/stream/' + data.id])
         } else {
           this.notifier.notify("error", "Error en el registro");
         }

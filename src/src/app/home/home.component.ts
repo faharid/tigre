@@ -23,7 +23,6 @@ export class HomeComponent implements OnInit {
 
   private readonly notifier: NotifierService;
 
-  private observer: IntersectionObserver;
   loadedAnimationIDs = [];
   opacityZero = 0.0;
   image2Opacity = 0.0;
@@ -67,23 +66,7 @@ export class HomeComponent implements OnInit {
   ngAfterViewInit() {
 
     //this.removeAllAnimations();
-
-    this.observer = new IntersectionObserver(entries => {
-
-      if (entries[0].isIntersecting === true) {
-        //console.log('visible');
-        this.refreshSlideElement("#" + entries[0].target.id);
-      }
-
-    }, {
-      threshold: 0.2
-    });
-
-
     const image4 = document.querySelector('#image4');
-    this.observer.observe(image4 as HTMLElement);
-
-
   }
 
 
@@ -122,7 +105,6 @@ export class HomeComponent implements OnInit {
   ngOnDestroy() {
     var body = document.getElementsByTagName("body")[0];
     body.classList.remove("home-page");
-    this.observer.disconnect();
   }
 
 

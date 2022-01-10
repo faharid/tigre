@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 const User = require('../models/user');
 
 // Create User
-router.post('/create', (req, res, next) => {
+router.put('/', (req, res, next) => {
     User.getUserByEmail(req.body.email, (err,one)=>{
         if(err){
             res.json({success: false, msg:'Error de registro'});
@@ -50,8 +50,8 @@ router.get('/', ( _req, res, next) => {
 });
 
 //Get User by id
-router.post('/', (req, res, next) => {
-    User.getUser(req.body.id,(err,one) => {
+router.get('/:id', (_req, res, next) => {
+    User.getUser(req.params.id,(err,one) => {
         if(err){
             return res.json({success: false, msg: 'User no encontrado'});
         } else {
@@ -65,7 +65,7 @@ router.post('/', (req, res, next) => {
 });
 
 //Delete User by id
-router.post('/delete', (req, res, next) => {
+router.delete('/:id', (req, res, next) => {
     User.deleteUser(req.body.id,(err) => {
         if(err){
         return res.json({success: false, msg: 'Error al eliminar user'});
