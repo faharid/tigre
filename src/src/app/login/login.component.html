@@ -1,0 +1,57 @@
+<div class="wrapper background">
+    <div class="page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card card-login card-liga">
+                        <form [formGroup]="valForm" (submit)="submitForm($event, valForm.value)" class="form" method="">
+                            <div class="card-header header-liga">
+                                <img alt="Card image" class="logo-img" src="assets/img/img7.png" />
+                            </div>
+
+                            <div class="card-body">
+                                <div class="input-group input-lg group-liga"
+                                    [ngClass]="{ 'input-group-focus': focus === true }">
+                                    <input class="form-control input-liga" placeholder="Correo" type="text"
+                                        (blur)="focus = false" (focus)="focus = true" formControlName="email" />
+                                    <div class="text-neutral text-liga"
+                                        *ngIf="valForm.controls['email'].hasError('required') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">
+                                        Campo Obligatorio</div>
+                                    <div class="text-neutral text-liga"
+                                        *ngIf="valForm.controls['email'].hasError('email') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">
+                                        Correo electrónico no válido</div>
+                                </div>
+
+
+                                <div class="input-group input-lg group-liga"
+                                    [ngClass]="{ 'input-group-focus': focus === true }">
+
+                                    <input class="form-control input-liga" placeholder="Contraseña" type="password"
+                                        (blur)="focus = false" (focus)="focus = true" formControlName="password" />
+                                    <div class="text-neutral text-liga"
+                                        *ngIf="valForm.controls['password'].hasError('required') && (valForm.controls['password'].dirty || valForm.controls['password'].touched)">
+                                        Campo Obligatorio</div>
+                                </div>
+
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6 text-center">
+                    <img class="table-img center-liga" [lazyLoad]="imageSrc5" />
+                    <img class="share-btn-img right-liga" [lazyLoad]="imageSrc6" />
+                </div>
+                <div class="col-md-12 text-center row-liga">
+                    <form [formGroup]="valForm" (submit)="submitForm($event, valForm.value)" class="form-liga"
+                        method="">
+                        <button class="btn btn-neutral btn-lg btn-liga" type="submit">REGISTRARSE</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="section-space"></div>
+</div>
+<notifier-container style="position: absolute;
+  bottom: 0;"></notifier-container>

@@ -1,3 +1,14 @@
-
-@import '~animate.css/animate.min';
+@import "~animate.css/animate.min";
 @import "~angular-notifier/styles";
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.mat-radio-label-content {
+    white-space: normal;
+}

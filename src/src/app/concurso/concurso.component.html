@@ -1,0 +1,61 @@
+<div class="wrapper background" (scroll)="onScroll($event)">
+  <div class="page-header">
+    <div class="container">
+      <div class="content-center space-liga">
+
+        <div *ngFor="let question of questions; index as i">
+          <mat-card class="example-card animate__animated animate__headShake" *ngIf="actualIndex == i"
+            [ngStyle]="{'opacity' : visible ? 1 : 0}" [@slideInOut]=transition>
+            <mat-card-title>{{questions[actualIndex]}}</mat-card-title>
+            <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+            <mat-card-content>
+              <p style="margin-bottom: 40px;">This card indeterminates progress bar.</p>
+
+              <mat-radio-group>
+
+                <div class="row">
+                  <div class="col-sm">
+                    <mat-radio-button class="example-margin" value="after">ONE</mat-radio-button>
+                  </div>
+                  <div class="col-sm">
+                    <mat-radio-button class="example-margin" value="after">TWO</mat-radio-button>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm">
+                    <mat-radio-button class="example-margin" value="after">THREE</mat-radio-button>
+                  </div>
+                  <div class="col-sm">
+                    <mat-radio-button class="example-margin" value="after">FOUR</mat-radio-button>
+                  </div>
+                </div>
+
+              </mat-radio-group>
+
+
+
+
+            </mat-card-content>
+            <mat-card-actions style="display: inline-flex; margin-top: 20px;">
+
+              <button mat-button (click)="previousQuestion()" style="color: white; background: #327bbb;"
+                [ngStyle]="{'opacity' : actualIndex == 0 ? 0.5 : 1}">ANTERIOR</button>
+              <div style="width: 50px;"></div>
+
+              <button *ngIf="actualIndex != questions.length - 1" mat-button (click)="nextQuestion()"
+                style="color: white; background: #349f34;">SIGUIENTE</button>
+
+              <button *ngIf="actualIndex == questions.length - 1" mat-button (click)="sendQuestions()"
+                style="color: white; background: #a79600;">FINALIZAR</button>
+
+            </mat-card-actions>
+          </mat-card>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+<notifier-container style="position: absolute;
+  bottom: 0;"></notifier-container>
