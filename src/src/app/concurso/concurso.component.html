@@ -9,25 +9,27 @@
             <mat-card-title>{{questions[actualIndex]}}</mat-card-title>
             <mat-card-subtitle>Dog Breed</mat-card-subtitle>
             <mat-card-content>
-              <p style="margin-bottom: 40px;">This card indeterminates progress bar.</p>
+              <p>This card indeterminates progress bar.</p>
 
-              <mat-radio-group>
+              <img alt="Card image" class="card-img" src="assets/img/earth.jpg" />
+
+              <mat-radio-group style="margin-top: 20px; display: block;">
 
                 <div class="row">
                   <div class="col-sm">
-                    <mat-radio-button class="example-margin" value="after">ONE</mat-radio-button>
+                    <mat-radio-button class="radio-button" value="1">Respuesta 1</mat-radio-button>
                   </div>
                   <div class="col-sm">
-                    <mat-radio-button class="example-margin" value="after">TWO</mat-radio-button>
+                    <mat-radio-button class="radio-button" value="2">Respuesta 2</mat-radio-button>
                   </div>
                 </div>
 
                 <div class="row">
                   <div class="col-sm">
-                    <mat-radio-button class="example-margin" value="after">THREE</mat-radio-button>
+                    <mat-radio-button class="radio-button" value="3">Respuesta 3</mat-radio-button>
                   </div>
                   <div class="col-sm">
-                    <mat-radio-button class="example-margin" value="after">FOUR</mat-radio-button>
+                    <mat-radio-button class="radio-button" value="4">Respuesta 4</mat-radio-button>
                   </div>
                 </div>
 
@@ -35,19 +37,18 @@
 
 
 
-
             </mat-card-content>
-            <mat-card-actions style="display: inline-flex; margin-top: 20px;">
+            <mat-card-actions style="display: inline-flex;">
 
               <button mat-button (click)="previousQuestion()" style="color: white; background: #327bbb;"
                 [ngStyle]="{'opacity' : actualIndex == 0 ? 0.5 : 1}">ANTERIOR</button>
               <div style="width: 50px;"></div>
 
               <button *ngIf="actualIndex != questions.length - 1" mat-button (click)="nextQuestion()"
-                style="color: white; background: #349f34;">SIGUIENTE</button>
+                style="color: white; background: #327bbb;">SIGUIENTE</button>
 
               <button *ngIf="actualIndex == questions.length - 1" mat-button (click)="sendQuestions()"
-                style="color: white; background: #a79600;">FINALIZAR</button>
+                style="color: white; background: #349f34;">FINALIZAR</button>
 
             </mat-card-actions>
           </mat-card>

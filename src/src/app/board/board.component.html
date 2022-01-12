@@ -1,0 +1,22 @@
+<div class="wrapper background" (scroll)="onScroll($event)">
+    <div class="page-header">
+        <div class="container">
+            <div class="content-center space-liga" style="overflow: auto;">
+
+
+                <div class="canvas-container">
+                    <img alt="" src=""
+                        style="background-color: transparent; width: 900px; height: 600px; position: absolute;"
+                        *ngFor="let image of images" [src]="image" />
+                    <canvas #canvas></canvas>
+                </div>
+
+                <!-- 
+                                   <button (click)="saveImage()">Save as Image</button> 
+                -->
+
+
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,13 +1,33 @@
-<div class="wrapper background" (scroll)="onScroll($event)">
-  <div class="page-header">
+<div class="wrapper">
+  <div class="page-header" style="overflow-y: scroll;">
     <div class="container">
-      <div class="content-center space-liga">
-        <a class="btn btn-neutral btn-lg btn-liga" [routerLink]="'/register'">
-          Registrar
-        </a>
+
+
+      <div class="row full-screen">
+        <div class="col-sm">
+          <img alt="" src="assets/img/home1.jpg" style="width: 100%; height: 100vh; object-fit: contain;" />
+        </div>
+
+        <div class="col-sm">
+          <img alt="" src="assets/img/home2.jpg" style="width: 100%; height: 100vh; object-fit: contain;" />
+        </div>
       </div>
+
+
+      <!--
+      <a class="btn btn-neutral btn-lg btn-liga" [routerLink]="'/register'">
+        Registrar
+      </a>
+      -->
+
+
+      <img class="topLeftLight" alt="" src="assets/img/top-left-light.png" />
+      <img class="bottomLeftLight" alt="" src="assets/img/bottom-left-light.png" />
+
+      <img class="topRightLight" alt="" src="assets/img/top-right-light.png" />
+      <img class="bottomRightLight" alt="" src="assets/img/bottom-right-light.png" />
+
+
     </div>
   </div>
 </div>
-<notifier-container style="position: absolute;
-bottom: 0;"></notifier-container>

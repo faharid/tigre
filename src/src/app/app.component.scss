@@ -1,0 +1,56 @@
+.background {
+    background-image: url("/assets/img/global-background.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.full-screen {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    margin: 0px;
+}
+
+.col-sm {
+    padding: 0px;
+}
+
+
+
+.topLeftLight {
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    max-width: 30%;
+    min-width: 300px;
+    object-fit: contain;
+}
+
+.bottomLeftLight {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    max-width: 30%;
+    min-width: 300px;
+    object-fit: contain;
+}
+
+.topRightLight {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    max-width: 30%;
+    min-width: 300px;
+    object-fit: contain;
+}
+
+.bottomRightLight {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    max-width: 30%;
+    min-width: 300px;
+    object-fit: contain;
+}

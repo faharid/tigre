@@ -2,12 +2,6 @@
     animation: move-left-right 4s infinite;
 }
 
-.background {
-    background-image: url("/assets/img/background2.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-
 @keyframes move-left-right {
     0% {
         transform: translateX(-10px);

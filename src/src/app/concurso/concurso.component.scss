@@ -2,6 +2,9 @@
     max-width: 600px;
     margin: auto;
     padding: 40px;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    margin-top: 50px;
 }
 
 p {
@@ -15,4 +18,22 @@ mat-radio-button {
 .mat-card-actions .mat-button {
     margin: 0 8px;
     min-height: 45px;
+}
+
+.radio-button {
+    border-style: solid;
+    border-width: 1px;
+    padding: 10px;
+    padding-top: 10px;
+    margin: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    border-color: #eee4e4;
+    padding-top: 15px;
+    margin-left: 0px;
+}
+
+.card-img {
+    max-height: 230px;
+    border-radius: 10px;
 }

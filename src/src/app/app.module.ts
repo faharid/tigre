@@ -53,6 +53,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
+import { BoardComponent } from './board/board.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -111,7 +112,8 @@ const agoraConfig: AgoraConfig = {
     AppComponent,
     NavbarComponent,
     LoginComponent,
-    ConcursoComponent
+    ConcursoComponent,
+    BoardComponent
   ],
   imports: [
     BrowserModule,

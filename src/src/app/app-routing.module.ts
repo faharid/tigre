@@ -5,6 +5,7 @@ import { LiveComponent } from "./live/live.component";
 import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
 import { ConcursoComponent } from "./concurso/concurso.component";
+import { BoardComponent } from "./board/board.component";
 import { FinishComponent } from "./finish/finish.component";
 import { StreamComponent } from "./stream/stream.component";
 import { BroadcastComponent } from "./broadcast/broadcast.component";
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'login', component: LoginComponent },
   { path: 'concurso', component: ConcursoComponent },
+  { path: 'board', component: BoardComponent },
   { path: 'live', component: LiveComponent },
   { path: 'stream', component: StreamComponent },
   { path: 'broadcast', component: BroadcastComponent },

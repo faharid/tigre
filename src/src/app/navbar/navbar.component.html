@@ -1,5 +1,8 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="300" id="navbar-top">
   <div class="container">
+
+    <!-- 
+
     <div class="navbar-translate">
       <button aria-controls="navigation-index" aria-label="Toggle navigation" class="navbar-toggler"
         [attr.aria-expanded]="!isCollapsed" (click)="isCollapsed = !isCollapsed" id="navigation" type="button">
@@ -167,5 +170,32 @@
         </li>
       </ul>
     </div>
+
+-->
+
+    <a [routerLink]="['home']" [ngStyle]="{'font-weight' : path == '/home' ? 'bold' : 'normal'}">
+      INICIO
+    </a>
+
+    <a [routerLink]=" ['login']" [ngStyle]="{'font-weight' : path == '/login' ? 'bold' : 'normal'}">
+      INGRESAR
+    </a>
+
+    <a [routerLink]=" ['register']" [ngStyle]="{'font-weight' : path == '/register' ? 'bold' : 'normal'}">
+      REGISTRO
+    </a>
+
+    <a [routerLink]="['register']">
+      LINE UP DEL DÍA
+    </a>
+
+    <a [routerLink]="['register']">
+      ESCENARIO
+    </a>
+
+    <a [routerLink]="['board']" [ngStyle]="{'font-weight' : path == '/board' ? 'bold' : 'normal'}">
+      DEJA TU HUELLA
+    </a>
+
   </div>
 </nav>
