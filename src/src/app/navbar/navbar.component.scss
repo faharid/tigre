@@ -2,6 +2,8 @@
     display: block;
     text-align: end;
     margin-right: 20px;
+    margin-left: auto;
+    width: max-content;
 }
 
 a {
@@ -13,7 +15,8 @@ a {
 }
 
 .navbar {
+    width: 100% !important;
+    display: inline;
     width: fit-content;
     margin-right: 0px;
-    margin-left: auto;
 }

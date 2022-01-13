@@ -110,7 +110,7 @@ export class LoginComponent implements OnInit {
   }
 
   goToMain(): void {
-    this.router.navigateByUrl("/live");
+    this.router.navigateByUrl("/line-up");
   }
 
 }

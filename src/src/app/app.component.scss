@@ -8,12 +8,22 @@
     background-image: url("/assets/img/global-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
-    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    //position: fixed;
+    top: 0;
+    left: 0;
+
+    /* Preserve aspet ratio */
+    min-width: 100%;
+    min-height: 100%;
 
     @media screen and (max-width: 600px) {
-        height: 100%;
-        padding-top: 10px;
-        padding-bottom: 150px;
+        //padding-top: 10px;
+        //padding-bottom: 150px;
     }
 }
 

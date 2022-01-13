@@ -4,14 +4,13 @@
     margin: auto;
     border-radius: 10px;
     border-style: solid;
-    margin-top: 50px;
     border-width: 25px;
     border-color: cornflowerblue;
 }
 
 canvas {
     background-color: transparent;
-    max-height: 600px;
+    max-height: 500px;
     z-index: 9999999;
     position: relative;
 }

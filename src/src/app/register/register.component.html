@@ -1,264 +1,256 @@
-<div class="backgroundContainer">
+<div>
 
-  <div class="background">
+  <div style="display: flex; flex-direction: column;">
 
-    <div style="display: flex; flex-direction: column;">
-      <img class="animate__animated animate__fadeIn" alt="" src="assets/img/logo.png"
-        style="height: 85px; object-fit: contain; width: 100%; margin-top: 65px;" />
+    <div class="row full-screen" style="margin-top: 45px;">
+      <div class="col-sm" style="display: flex; flex-direction: column;">
 
-      <div class="row full-screen" style="margin-top: 45px;">
-        <div class="col-sm" style="display: flex; flex-direction: column;">
-
-          <div style="width: 90%; margin: auto; max-width: 450px;">
-            <form [formGroup]="valForm" (submit)="submitForm($event, valForm.value)" class="form" method="">
-              <div class="card-body" style="padding-bottom: 0px;">
-                <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
-                  <input class="form-control input-liga" placeholder="NOMBRE" type="text" (blur)="focus = false"
-                    (focus)="focus = true" formControlName="nombre" />
-                  <div class="text-neutral text-liga"
-                    *ngIf="valForm.controls['nombre'].hasError('required') && (valForm.controls['nombre'].dirty || valForm.controls['nombre'].touched)">
-                    Campo Obligatorio</div>
-                </div>
-                <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
-                  <input class="form-control input-liga" placeholder="APELLIDO" type="text" (blur)="focus = false"
-                    (focus)="focus = true" formControlName="apellido" />
-                  <div class="text-neutral text-liga"
-                    *ngIf="valForm.controls['apellido'].hasError('required') && (valForm.controls['apellido'].dirty || valForm.controls['apellido'].touched)">
-                    Campo Obligatorio</div>
-                </div>
-                <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
-                  <input class="form-control input-liga" placeholder="CORREO" type="email" (blur)="focus = false"
-                    (focus)="focus = true" formControlName="email" />
-                  <div class="text-neutral text-liga"
-                    *ngIf="valForm.controls['email'].hasError('required') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">
-                    Campo Obligatorio</div>
-                  <div class="text-neutral text-liga"
-                    *ngIf="valForm.controls['email'].hasError('email') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">
-                    correo electrónico no válido</div>
-                </div>
-
-
-                <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
-                  <input class="form-control input-liga" placeholder="CONTRASEÑA" type="password" (blur)="focus = false"
-                    (focus)="focus = true" formControlName="password" />
-                  <div class="text-neutral text-liga"
-                    *ngIf="valForm.controls['password'].hasError('required') && (valForm.controls['password'].dirty || valForm.controls['password'].touched)">
-                    Campo Obligatorio</div>
-                </div>
-
-                <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
-                  <input class="form-control input-liga" placeholder="CÉDULA" type="text" (blur)="focus = false"
-                    (focus)="focus = true" formControlName="cedula" />
-                  <div class="text-neutral text-liga"
-                    *ngIf="valForm.controls['cedula'].hasError('required') && (valForm.controls['cedula'].dirty || valForm.controls['cedula'].touched)">
-                    Campo Obligatorio</div>
-                </div>
-
-                <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
-
-                  <input class="form-control input-liga" placeholder="TELÉFONO" type="text" (blur)="focus = false"
-                    (focus)="focus = true" formControlName="numero" />
-                  <div class="text-neutral text-liga"
-                    *ngIf="valForm.controls['numero'].hasError('required') && (valForm.controls['numero'].dirty || valForm.controls['numero'].touched)">
-                    Campo Obligatorio</div>
-                </div>
+        <div style="width: 90%; margin: auto; max-width: 450px;">
+          <form [formGroup]="valForm" (submit)="submitForm($event, valForm.value)" class="form" method="">
+            <div class="card-body" style="padding-bottom: 0px;">
+              <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
+                <input class="form-control input-liga" placeholder="NOMBRE" type="text" (blur)="focus = false"
+                  (focus)="focus = true" formControlName="nombre" />
+                <div class="text-neutral text-liga"
+                  *ngIf="valForm.controls['nombre'].hasError('required') && (valForm.controls['nombre'].dirty || valForm.controls['nombre'].touched)">
+                  Campo Obligatorio</div>
               </div>
-            </form>
-          </div>
-
-          <img alt="" src="assets/img/line.png"
-            style="object-fit: contain; width: 100%; height: 20px; margin-bottom: 20px;" />
-
-          <form [formGroup]="valForm" (submit)="submitForm($event, valForm.value)" class="form-liga" method="">
-            <button class="whiteButton animate__animated animate__fadeIn" style="width: 100%; padding: 10px;"
-              type="submit">REGISTRARSE</button>
-          </form>
-
-        </div>
-
-        <div class="col-sm" style="display: flex; flex-direction: column;">
-
-          <div style="margin-top: -50px;">
-
-            <div class="seats-container">
-
-              <h4 style="margin-bottom: 0px;">ESCENARIO</h4>
-              <div class="screen"></div>
-
-              <div class="row">
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
+              <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
+                <input class="form-control input-liga" placeholder="APELLIDO" type="text" (blur)="focus = false"
+                  (focus)="focus = true" formControlName="apellido" />
+                <div class="text-neutral text-liga"
+                  *ngIf="valForm.controls['apellido'].hasError('required') && (valForm.controls['apellido'].dirty || valForm.controls['apellido'].touched)">
+                  Campo Obligatorio</div>
               </div>
-              <div class="row">
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-              </div>
-              <div class="row">
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-              </div>
-              <div class="row">
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-              </div>
-              <div class="row">
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-              </div>
-              <div class="row">
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-              </div>
-              <div class="row">
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-              </div>
-              <div class="row">
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat occupied"></div>
-                <div class="seat occupied"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
-                <div class="seat"></div>
+              <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
+                <input class="form-control input-liga" placeholder="CORREO" type="email" (blur)="focus = false"
+                  (focus)="focus = true" formControlName="email" />
+                <div class="text-neutral text-liga"
+                  *ngIf="valForm.controls['email'].hasError('required') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">
+                  Campo Obligatorio</div>
+                <div class="text-neutral text-liga"
+                  *ngIf="valForm.controls['email'].hasError('email') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">
+                  correo electrónico no válido</div>
               </div>
 
+
+              <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
+                <input class="form-control input-liga" placeholder="CONTRASEÑA" type="password" (blur)="focus = false"
+                  (focus)="focus = true" formControlName="password" />
+                <div class="text-neutral text-liga"
+                  *ngIf="valForm.controls['password'].hasError('required') && (valForm.controls['password'].dirty || valForm.controls['password'].touched)">
+                  Campo Obligatorio</div>
+              </div>
+
+              <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
+                <input class="form-control input-liga" placeholder="CÉDULA" type="text" (blur)="focus = false"
+                  (focus)="focus = true" formControlName="cedula" />
+                <div class="text-neutral text-liga"
+                  *ngIf="valForm.controls['cedula'].hasError('required') && (valForm.controls['cedula'].dirty || valForm.controls['cedula'].touched)">
+                  Campo Obligatorio</div>
+              </div>
+
+              <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
+
+                <input class="form-control input-liga" placeholder="TELÉFONO" type="text" (blur)="focus = false"
+                  (focus)="focus = true" formControlName="numero" />
+                <div class="text-neutral text-liga"
+                  *ngIf="valForm.controls['numero'].hasError('required') && (valForm.controls['numero'].dirty || valForm.controls['numero'].touched)">
+                  Campo Obligatorio</div>
+              </div>
             </div>
-          </div>
-
-          <ul class="showcase">
-            <li>
-              <div class="seat"></div>
-              <small>Disponible</small>
-            </li>
-            <li>
-              <div class="seat selected"></div>
-              <small>Seleccionado</small>
-            </li>
-            <li>
-              <div class="seat occupied"></div>
-              <small>Ocupado</small>
-            </li>
-          </ul>
-
+          </form>
         </div>
+
+        <img alt="" src="assets/img/line.png"
+          style="object-fit: contain; width: 100%; height: 20px; margin-bottom: 20px;" />
+
+        <form [formGroup]="valForm" (submit)="submitForm($event, valForm.value)" class="form-liga" method="">
+          <button class="whiteButton animate__animated animate__fadeIn" style="width: 100%; padding: 10px;"
+            type="submit">REGISTRARSE</button>
+        </form>
+
+      </div>
+
+      <div class="col-sm" style="display: flex; flex-direction: column;">
+
+        <div style="margin-top: -50px;">
+
+          <div class="seats-container">
+
+            <h4 style="margin-bottom: 0px;">ESCENARIO</h4>
+            <div class="screen"></div>
+
+            <div class="row">
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+            </div>
+            <div class="row">
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+            </div>
+            <div class="row">
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+            </div>
+            <div class="row">
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+            </div>
+            <div class="row">
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+            </div>
+            <div class="row">
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+            </div>
+            <div class="row">
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+            </div>
+            <div class="row">
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat occupied"></div>
+              <div class="seat occupied"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+              <div class="seat"></div>
+            </div>
+
+          </div>
+        </div>
+
+        <ul class="showcase">
+          <li>
+            <div class="seat"></div>
+            <small>Disponible</small>
+          </li>
+          <li>
+            <div class="seat selected"></div>
+            <small>Seleccionado</small>
+          </li>
+          <li>
+            <div class="seat occupied"></div>
+            <small>Ocupado</small>
+          </li>
+        </ul>
+
       </div>
     </div>
-
-    <img class="topLeftLight animate__animated animate__fadeIn" alt="" src="assets/img/top-left-light.png" />
-    <img class="bottomLeftLight animate__animated animate__fadeIn" alt="" src="assets/img/bottom-left-light.png" />
-    <img class="topRightLight animate__animated animate__fadeIn" alt="" src="assets/img/top-right-light.png" />
-    <img class="bottomRightLight animate__animated animate__fadeIn" alt="" src="assets/img/bottom-right-light.png" />
-
   </div>
 
-
+  <img class="topLeftLight animate__animated animate__fadeIn" alt="" src="assets/img/top-left-light.png" />
+  <img class="bottomLeftLight animate__animated animate__fadeIn" alt="" src="assets/img/bottom-left-light.png" />
+  <img class="topRightLight animate__animated animate__fadeIn" alt="" src="assets/img/top-right-light.png" />
+  <img class="bottomRightLight animate__animated animate__fadeIn" alt="" src="assets/img/bottom-right-light.png" />
 
 </div>

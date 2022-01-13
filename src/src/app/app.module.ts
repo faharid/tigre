@@ -54,6 +54,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { BoardComponent } from './board/board.component';
+import { LineUpComponent } from './line-up/line-up.component';
 
 
 const customNotifierOptions: NotifierOptions = {
@@ -113,7 +114,8 @@ const agoraConfig: AgoraConfig = {
     NavbarComponent,
     LoginComponent,
     ConcursoComponent,
-    BoardComponent
+    BoardComponent,
+    LineUpComponent
   ],
   imports: [
     BrowserModule,

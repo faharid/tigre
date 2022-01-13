@@ -6,6 +6,8 @@ import { RegisterComponent } from "./register/register.component";
 import { LoginComponent } from "./login/login.component";
 import { ConcursoComponent } from "./concurso/concurso.component";
 import { BoardComponent } from "./board/board.component";
+import { LineUpComponent } from "./line-up/line-up.component";
+
 import { FinishComponent } from "./finish/finish.component";
 import { StreamComponent } from "./stream/stream.component";
 import { BroadcastComponent } from "./broadcast/broadcast.component";
@@ -20,6 +22,7 @@ const routes: Routes = [
   { path: 'board', component: BoardComponent },
   { path: 'live', component: LiveComponent },
   { path: 'stream', component: StreamComponent },
+  { path: 'line-up', component: LineUpComponent },
   { path: 'broadcast', component: BroadcastComponent },
   { path: '**', redirectTo: 'home', pathMatch: "full" }
 ];

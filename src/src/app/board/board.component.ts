@@ -16,12 +16,12 @@ import { switchMap, takeUntil, pairwise } from 'rxjs/operators';
 export class BoardComponent implements OnInit, AfterViewInit {
   @ViewChild('canvas') public canvas: ElementRef | undefined;
   @Input() public width = 900;
-  @Input() public height = 600;
+  @Input() public height = 500;
 
   private canvasEl: HTMLCanvasElement;
   private cx: CanvasRenderingContext2D | null | undefined;
-  private images = [];
-  private colors = ["blue", "red", "black", "brown", "yellow", "blueviolet", "darkblue", "chocolate", "darkmagenta", "darkgreen", "dodgerblue", "forestgreen", "navy", "steelblue", "tomato"];
+  images = [];
+  colors = ["blue", "red", "black", "brown", "yellow", "blueviolet", "darkblue", "chocolate", "darkmagenta", "darkgreen", "dodgerblue", "forestgreen", "navy", "steelblue", "tomato"];
 
 
   public ngOnInit() {
