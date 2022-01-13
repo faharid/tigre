@@ -16,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
-  styleUrls: ["./login.component.scss"]
+  styleUrls: ["./login.component.scss", "../app.component.scss"]
 })
 export class LoginComponent implements OnInit {
   focus;
@@ -68,7 +68,6 @@ export class LoginComponent implements OnInit {
         password: this.valForm.value.password,
       };
 
-
       this.saveToken("12345678");
 
       this.goToMain();
@@ -93,6 +92,9 @@ export class LoginComponent implements OnInit {
   }
 
   saveToken(token: string) {
+
+    console.log("HOLA");
+
     this.localStorage.store('token', token);
   }
 

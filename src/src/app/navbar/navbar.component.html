@@ -173,29 +173,38 @@
 
 -->
 
-    <a [routerLink]="['home']" [ngStyle]="{'font-weight' : path == '/home' ? 'bold' : 'normal'}">
-      INICIO
-    </a>
+    <ng-container *ngIf="!getToken()">
+      <a [routerLink]="['home']" [ngStyle]="{'font-weight' : path == '/home' ? 'bold' : 'normal'}">
+        INICIO
+      </a>
 
-    <a [routerLink]=" ['login']" [ngStyle]="{'font-weight' : path == '/login' ? 'bold' : 'normal'}">
-      INGRESAR
-    </a>
+      <a [routerLink]=" ['login']" [ngStyle]="{'font-weight' : path == '/login' ? 'bold' : 'normal'}">
+        INGRESAR
+      </a>
 
-    <a [routerLink]=" ['register']" [ngStyle]="{'font-weight' : path == '/register' ? 'bold' : 'normal'}">
-      REGISTRO
-    </a>
+      <a [routerLink]=" ['register']" [ngStyle]="{'font-weight' : path == '/register' ? 'bold' : 'normal'}">
+        REGISTRO
+      </a>
+    </ng-container>
 
-    <a [routerLink]="['register']">
-      LINE UP DEL DÍA
-    </a>
+    <ng-container *ngIf="getToken()">
+      <a [routerLink]="['line-up']">
+        LINE UP DEL DÍA
+      </a>
 
-    <a [routerLink]="['register']">
-      ESCENARIO
-    </a>
+      <a [routerLink]="['live']">
+        ESCENARIO
+      </a>
 
-    <a [routerLink]="['board']" [ngStyle]="{'font-weight' : path == '/board' ? 'bold' : 'normal'}">
-      DEJA TU HUELLA
-    </a>
+      <a [routerLink]="['board']" [ngStyle]="{'font-weight' : path == '/board' ? 'bold' : 'normal'}">
+        DEJA TU HUELLA
+      </a>
+
+      <a (click)="logout()" [ngStyle]="{'font-weight' : path == '/exit' ? 'bold' : 'normal'}">
+        SALIR
+      </a>
+      
+    </ng-container>
 
   </div>
 </nav>

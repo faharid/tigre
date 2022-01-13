@@ -1,24 +1,19 @@
+<!--
+
 <div class="wrapper">
   <div class="page-header" style="overflow-y: scroll;">
     <div class="container">
 
 
-      <div class="row full-screen">
-        <div class="col-sm">
-          <img alt="" src="assets/img/home1.jpg" style="width: 100%; height: 100vh; object-fit: contain;" />
-        </div>
-
-        <div class="col-sm">
-          <img alt="" src="assets/img/home2.jpg" style="width: 100%; height: 100vh; object-fit: contain;" />
-        </div>
+      <div style="display: flex; flex-direction: column;"><img alt="" src="assets/img/logo.png" />
+<div class="row full-screen">  <div class="col-sm" style="display: flex;">    <img alt="" src="assets/img/homeLeft1.png"      style="width: 80%; margin:auto; height: 100vh; object-fit: contain;" />  </div>
+  <div class="col-sm" style="display: flex;">    <img alt="" src="assets/img/homeRight1.png"      style="width: 80%; margin:auto; height: 100vh; object-fit: contain;" />  </div></div>
       </div>
 
 
-      <!--
-      <a class="btn btn-neutral btn-lg btn-liga" [routerLink]="'/register'">
-        Registrar
-      </a>
-      -->
+
+
+
 
 
       <img class="topLeftLight" alt="" src="assets/img/top-left-light.png" />
@@ -30,4 +25,44 @@
 
     </div>
   </div>
+</div>
+-->
+
+<!--
+      <a class="btn btn-neutral btn-lg btn-liga" [routerLink]="'/register'">Registrar
+      </a>
+      -->
+
+
+
+<div class="backgroundContainer">
+
+  <div class="background">
+
+    <div style="display: flex; flex-direction: column;">
+      <img class="animate__animated animate__fadeIn" alt="" src="assets/img/logo.png"
+        style="height: 85px; object-fit: contain; width: 100%; margin-top: 65px;" />
+
+      <div class="row full-screen">
+        <div class="col-sm" style="display: flex;"><img class="animate__animated animate__fadeInLeft" alt=""
+            src="assets/img/homeLeft1.png"
+            style="width: 80%; margin:auto; height: auto; object-fit: contain; margin-top: 50px;" />
+        </div>
+
+        <div class="col-sm" style="display: flex; flex-direction: column;">
+          <img class="animate__animated animate__fadeInDown" alt="" src="assets/img/homeRight1.png"
+            style="width: 80%; margin:auto; height: auto; object-fit: contain; margin-bottom: 10px; margin-top: 25%;" />
+          <a [routerLink]="'/register'" class="whiteButton registerButton animate__animated animate__fadeInUp">
+            REGÍSTRATE</a>
+        </div>
+      </div>
+    </div>
+
+    <img class="topLeftLight animate__animated animate__fadeInDown" alt="" src="assets/img/top-left-light.png" />
+    <img class="bottomLeftLight animate__animated animate__fadeInUp" alt="" src="assets/img/bottom-left-light.png" />
+    <img class="topRightLight animate__animated animate__fadeInDown" alt="" src="assets/img/top-right-light.png" />
+    <img class="bottomRightLight animate__animated animate__fadeInUp" alt="" src="assets/img/bottom-right-light.png" />
+
+  </div>
+
 </div>

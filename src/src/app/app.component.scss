@@ -1,13 +1,24 @@
+.backgroundContainer {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
 .background {
     background-image: url("/assets/img/global-background.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100%;
+
+    @media screen and (max-width: 600px) {
+        height: 100%;
+        padding-top: 10px;
+        padding-bottom: 150px;
+    }
 }
 
 .full-screen {
     width: 100vw;
-    height: 100vh;
-    position: absolute;
     left: 0px;
     top: 0px;
     margin: 0px;
@@ -17,8 +28,6 @@
     padding: 0px;
 }
 
-
-
 .topLeftLight {
     position: absolute;
     left: 0px;
@@ -26,15 +35,16 @@
     max-width: 30%;
     min-width: 300px;
     object-fit: contain;
+    pointer-events: none;
 }
 
 .bottomLeftLight {
     position: absolute;
     left: 0px;
     bottom: 0px;
-    max-width: 30%;
-    min-width: 300px;
+    max-width: 200px;
     object-fit: contain;
+    pointer-events: none;
 }
 
 .topRightLight {
@@ -44,13 +54,31 @@
     max-width: 30%;
     min-width: 300px;
     object-fit: contain;
+    pointer-events: none;
 }
 
 .bottomRightLight {
     position: absolute;
     right: 0px;
     bottom: 0px;
-    max-width: 30%;
-    min-width: 300px;
+    max-width: 200px;
     object-fit: contain;
+    pointer-events: none;
+}
+
+.whiteButton {
+    background: transparent;
+    border-style: solid;
+    border-color: white;
+    border-radius: 50px;
+    border-width: 1px;
+    color: white !important;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 10px;
+    cursor: pointer;
+    text-align: center;
+    font-size: x-large;
+    letter-spacing: 5px;
+    width: 80%;
 }

@@ -93,3 +93,23 @@
 .text-neutral {
     color: red !important;
 }
+
+input {
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 20px;
+    min-height: 45px;
+}
+
+.form-input {
+    margin-bottom: 20px;
+}
+
+.form-control::placeholder {
+    color: #ffffff;
+    opacity: 1;
+}
+
+input {
+    background: transparent;
+}

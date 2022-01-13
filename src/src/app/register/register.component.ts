@@ -18,21 +18,25 @@ export class RegisterComponent implements OnInit {
   imageSrc6 = "assets/img/img6.png";
   public hincha: any;
   private readonly notifier: NotifierService;
-
   valForm: FormGroup;
+
+
 
   constructor(private backendService: BackendService,
     public notifierService: NotifierService,
     private router: Router,
     fb: FormBuilder) {
+
     this.notifier = notifierService;
     this.valForm = fb.group({
       'email': [null, Validators.compose([Validators.required, CustomValidators.email])],
       'nombre': [null, Validators.required],
       'apellido': [null, Validators.required],
       'numero': [null, Validators.required],
-      'cedula': [null, Validators.required]
+      'cedula': [null, Validators.required],
+      'password': [null, Validators.required]
     });
+
   }
 
   scrollToDownload(element: any) {
@@ -45,10 +49,24 @@ export class RegisterComponent implements OnInit {
       nombre: '',
       apellido: '',
       numero: '',
-      cedula: ''
+      cedula: '',
+      password: ''
+
     })
     var body = document.getElementsByTagName("body")[0];
     body.classList.add("register-page");
+
+    //SEATS
+    const seatsContainer = document.querySelector('.seats-container') as HTMLInputElement;
+    const seats = document.querySelectorAll('.row .seat:not(.occupied)');
+    seatsContainer.addEventListener('click', e => {
+      if ((e.target as HTMLInputElement).classList.contains('seat') &&
+        !(e.target as HTMLInputElement).classList.contains('occupied')) {
+        (e.target as HTMLInputElement).classList.toggle('selected');
+      }
+    });
+
+
   }
 
   submitForm($ev, value: any) {
@@ -62,8 +80,11 @@ export class RegisterComponent implements OnInit {
         nombre: this.valForm.value.nombre,
         apellido: this.valForm.value.apellido,
         cedula: this.valForm.value.cedula,
-        numero: this.valForm.value.numero
+        numero: this.valForm.value.numero,
+        password: this.valForm.value.password,
       };
+
+      /*
       this.backendService.register(user).subscribe(data => {
         if (data.success) {
           this.router.navigate(['/stream/' + data.id])
@@ -71,6 +92,8 @@ export class RegisterComponent implements OnInit {
           this.notifier.notify("error", "Error en el registro");
         }
       })
+      */
+
     }
   }
 
@@ -78,4 +101,6 @@ export class RegisterComponent implements OnInit {
     var body = document.getElementsByTagName("body")[0];
     body.classList.remove("register-page");
   }
+
+
 }

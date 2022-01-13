@@ -1,18 +1,22 @@
-<div class="wrapper background">
-    <div class="page-header">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="card card-login card-liga">
-                        <form [formGroup]="valForm" (submit)="submitForm($event, valForm.value)" class="form" method="">
-                            <div class="card-header header-liga">
-                                <img alt="Card image" class="logo-img" src="assets/img/img7.png" />
-                            </div>
+<div class="backgroundContainer">
 
+    <div class="background">
+
+        <div style="display: flex; flex-direction: column;">
+
+            <img class="animate__animated animate__fadeIn" alt="" src="assets/img/logo.png"
+                style="height: 85px; object-fit: contain; width: 100%; margin-top: 65px;" />
+
+            <div class="row full-screen" style="max-width: 500px; width: 80%; margin: auto;">
+                <div class="col-sm" style="display: flex; flex-direction: column; margin-top: 20px;">
+
+                    <div style="width: 90%; margin: auto; margin-top: 40px;">
+                        <form [formGroup]="valForm" (submit)="submitForm($event, valForm.value)" class="form" method="">
                             <div class="card-body">
-                                <div class="input-group input-lg group-liga"
-                                    [ngClass]="{ 'input-group-focus': focus === true }">
-                                    <input class="form-control input-liga" placeholder="Correo" type="text"
+
+
+                                <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
+                                    <input class="form-control input-liga" placeholder="CORREO" type="text"
                                         (blur)="focus = false" (focus)="focus = true" formControlName="email" />
                                     <div class="text-neutral text-liga"
                                         *ngIf="valForm.controls['email'].hasError('required') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">
@@ -23,35 +27,41 @@
                                 </div>
 
 
-                                <div class="input-group input-lg group-liga"
-                                    [ngClass]="{ 'input-group-focus': focus === true }">
+                                <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
 
-                                    <input class="form-control input-liga" placeholder="Contraseña" type="password"
+                                    <input class="form-control input-liga" placeholder="CONTRASEÑA" type="password"
                                         (blur)="focus = false" (focus)="focus = true" formControlName="password" />
                                     <div class="text-neutral text-liga"
                                         *ngIf="valForm.controls['password'].hasError('required') && (valForm.controls['password'].dirty || valForm.controls['password'].touched)">
                                         Campo Obligatorio</div>
                                 </div>
 
-
                             </div>
                         </form>
                     </div>
-                </div>
-                <div class="col-md-6 text-center">
-                    <img class="table-img center-liga" [lazyLoad]="imageSrc5" />
-                    <img class="share-btn-img right-liga" [lazyLoad]="imageSrc6" />
-                </div>
-                <div class="col-md-12 text-center row-liga">
-                    <form [formGroup]="valForm" (submit)="submitForm($event, valForm.value)" class="form-liga"
-                        method="">
-                        <button class="btn btn-neutral btn-lg btn-liga" type="submit">REGISTRARSE</button>
+
+                    <img alt="" src="assets/img/line.png"
+                        style="object-fit: contain; width: 100%; height: 20px; margin-bottom: 20px;" />
+
+
+                    <form [formGroup]="valForm" (submit)="submitForm($event, valForm.value)" class="form-liga" method=""
+                        style="width: 80%;">
+                        <button class="whiteButton animate__animated animate__fadeIn"
+                            style="width: 100%; padding: 10px;" type="submit">INGRESAR</button>
                     </form>
+
+
                 </div>
+
             </div>
+
+            <img class="topLeftLight animate__animated animate__fadeIn" alt="" src="assets/img/top-left-light.png" />
+            <img class="bottomLeftLight animate__animated animate__fadeIn" alt=""
+                src="assets/img/bottom-left-light.png" />
+            <img class="topRightLight animate__animated animate__fadeIn" alt="" src="assets/img/top-right-light.png" />
+            <img class="bottomRightLight animate__animated animate__fadeIn" alt=""
+                src="assets/img/bottom-right-light.png" />
+
         </div>
+
     </div>
-    <div class="section-space"></div>
-</div>
-<notifier-container style="position: absolute;
-  bottom: 0;"></notifier-container>
