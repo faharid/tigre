@@ -8,9 +8,6 @@ import { NgxAgoraService, Stream, AgoraClient, ClientEvent } from 'ngx-agora';
 })
 export class LiveComponent implements OnInit {
 
-
-  itemsCount = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "",];
-
   private client: AgoraClient;
   private localStream: Stream;
   playingStream: Stream;
@@ -281,6 +278,7 @@ export class LiveComponent implements OnInit {
       });
       let quality: any = "480p_3";
       localStreamBroadcast.setVideoProfile(quality);
+      localStreamBroadcast.setAudioVolume(0);
       localStreamBroadcast.init(() => {
         console.log("getUserMedia successfully");
         localStreamBroadcast.play('userCamera');
