@@ -89,24 +89,20 @@ export class LiveComponent implements OnInit {
     this.agoraService.client.join('dd3247ba803b47e4a5d55658b7a816f4', 'Broadcast', null, (uid) => {
     });
 
-    this.clientPublico = this.agoraService.createClient({ mode: 'live', codec: 'vp8' });
+    this.clientPublico = this.agoraServicePublico.createClient({ mode: 'live', codec: 'vp8' });
     this.agoraServicePublico.client.setClientRole('audience');
     this.assignClientHandlersPublico();
     this.agoraServicePublico.client.join('dd3247ba803b47e4a5d55658b7a816f4', 'Publico', null, (uid) => {
     });
 
-
-    this.agoraService.client.getCameras((devices) => {
-      console.log(devices);
+    this.agoraServiceBroadcast.client.getCameras((devices) => {
       for (let i = 0; i < devices.length; i++) {
         this.data.push({ id: devices[i].deviceId, name: "Cámara " + (i + 1) })
       }
-
       if (this.data.length > 0) {
         this.camera = this.data[0];
         this.stream();
       }
-
     });
 
   }
@@ -243,12 +239,14 @@ export class LiveComponent implements OnInit {
       this.isPlaying = true;
       this.playingStream.stop()
       this.playingStream.play(this.streamId);
+    }
 
+    if (this.playingStreamPublico) {
       this.isPlayingPublico = true;
       this.playingStreamPublico.stop()
       this.playingStreamPublico.play(this.streamIdPublico);
-
     }
+
   }
 
 
