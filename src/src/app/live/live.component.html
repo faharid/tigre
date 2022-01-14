@@ -18,9 +18,13 @@
         </div>
 
 
-        <div id="userCamera" style="width: 200px; height: 200px; background: black;"></div>
+        <div id="userCamera"
+            style="width: 100px; height: 100px; background: black; position: absolute; margin-top: 2px; left: 40px;">
+        </div>
 
-        <div *ngFor="let callId of remoteCallsPublico" [id]="callId" style="width: 200px; height: 200px;">
+        <div style="margin-top: 30px; display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 50px;">
+            <div *ngFor="let callId of remoteCallsPublico" [id]="callId" style="width: 60px; height: 60px;">
+            </div>
         </div>
 
 
