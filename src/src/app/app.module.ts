@@ -56,7 +56,6 @@ import { MatRadioModule } from '@angular/material/radio';
 import { BoardComponent } from './board/board.component';
 import { LineUpComponent } from './line-up/line-up.component';
 
-
 const customNotifierOptions: NotifierOptions = {
   position: {
     horizontal: {
@@ -99,7 +98,7 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 const agoraConfig: AgoraConfig = {
-  AppID: '33c2d8d666114b62a5b8a37bc9cfe6f0',
+  AppID: 'dd3247ba803b47e4a5d55658b7a816f4',
 };
 
 @NgModule({

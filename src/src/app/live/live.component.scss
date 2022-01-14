@@ -1,29 +1,31 @@
-
-
-.space-liga{
+.space-liga {
     position: absolute;
     bottom: 10px;
     top: auto;
 }
 
-img.ng-lazyloaded { 
+img.ng-lazyloaded {
     animation: fadein 1.5s;
 }
 @keyframes fadein {
-    from { opacity: 0; }
-    to { opacity: 1; } 
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
-.group-liga{
+.group-liga {
     margin-bottom: 20px;
 }
 
-.btn-liga{
+.btn-liga {
     color: black !important;
     font-size: large;
     font-weight: 700;
     border-radius: 0;
-    font-family: 'Raleway', sans-serif;
+    font-family: "Raleway", sans-serif;
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
     padding-right: 6vw;
@@ -31,21 +33,21 @@ img.ng-lazyloaded {
     margin: auto auto;
 }
 
-.row-liga{
+.row-liga {
     margin-top: 50px;
 }
 
-.center-liga{
+.center-liga {
     width: 80%;
     margin-top: 50px;
     margin-bottom: 50px;
 }
 
-.align-center{
+.align-center {
     text-align: center;
 }
 
-.logo-img{
+.logo-img {
     border-radius: 0 !important;
     margin: auto auto !important;
     position: relative !important;
@@ -53,23 +55,23 @@ img.ng-lazyloaded {
     padding: 1rem;
 }
 
-.header-liga{
+.header-liga {
     padding: 10px;
     text-align: center;
     background-color: rgb(255 255 255 / 5%) !important;
 }
 
-.form-liga{
+.form-liga {
     margin: auto auto;
 }
 
-.bg-liga-first{
+.bg-liga-first {
     max-width: 90vw;
     width: 60vh;
     height: auto !important;
 }
 
-.bg-liga-last{
+.bg-liga-last {
     max-width: 90vw;
     width: 80vh;
     height: auto !important;
@@ -91,17 +93,17 @@ img.ng-lazyloaded {
 }
 .pulse:hover {
     animation: none;
-}   
+}
 
 @-webkit-keyframes pulse {
     0% {
         -webkit-box-shadow: 0 0 0 0 rgba(27, 22, 4, 0.4);
     }
     70% {
-        -webkit-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+        -webkit-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
     }
     100% {
-        -webkit-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+        -webkit-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
     }
 }
 
@@ -111,15 +113,14 @@ img.ng-lazyloaded {
         box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.4);
     }
     70% {
-        -moz-box-shadow: 0 0 0 10px rgba(204,169,44, 0);
-        box-shadow: 0 0 0 10px rgba(204,169,44, 0);
+        -moz-box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
+        box-shadow: 0 0 0 10px rgba(204, 169, 44, 0);
     }
     100% {
-        -moz-box-shadow: 0 0 0 0 rgba(204,169,44, 0);
-        box-shadow: 0 0 0 0 rgba(204,169,44, 0);
+        -moz-box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
+        box-shadow: 0 0 0 0 rgba(204, 169, 44, 0);
     }
 }
-
 
 .pulse2 {
     max-height: 64px;
@@ -132,7 +133,7 @@ img.ng-lazyloaded {
 }
 .pulse2:hover {
     animation: none;
-}   
+}
 
 @-webkit-keyframes pulse2 {
     0% {
@@ -159,4 +160,23 @@ img.ng-lazyloaded {
         -moz-box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
         box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
     }
+}
+
+.dropdown-item {
+    cursor: pointer;
+}
+
+.videoLoader {
+    width: 100px;
+    object-fit: contain;
+    margin: auto;
+    display: block;
+    pointer-events: all;
+    cursor: pointer;
+    position: absolute;
+    left: 0px;
+    height: 100px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
 }

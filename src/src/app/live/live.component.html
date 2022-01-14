@@ -1,3 +1,34 @@
 <div class="container">
 
-</div>
+    <div style="display: flex; flex-direction: column;">
+
+        <div id="remote-container"
+            style="background: black; height: 35vw; min-height: 450px; width: 70vw; margin: auto; position: relative;">
+
+            <div *ngFor="let callId of remoteCalls" [id]="callId" class="remote"
+                style="width: 100%; height: 100%; cursor: pointer; position: absolute;">
+            </div>
+
+            <div *ngIf="!isPlaying" style="width: 100%; height: 100%; background: black; position: absolute;">
+                <img (click)="playStream()" alt="" src="assets/img/play.png" class="videoLoader" />
+                <h3 class="videoLoader" style="width: auto; text-align: center; margin-bottom: 60px;">INGRESAR AL
+                    STREAMING</h3>
+            </div>
+
+        </div>
+
+
+        <div id="userCamera" style="width: 200px; height: 200px; background: black;"></div>
+
+        <div *ngFor="let callId of remoteCallsPublico" [id]="callId" style="width: 200px; height: 200px;">
+        </div>
+
+
+        <img class="topLeftLight animate__animated animate__fadeInDown" alt="" src="assets/img/top-left-light.png" />
+        <img class="bottomLeftLight animate__animated animate__fadeInUp" alt=""
+            src="assets/img/bottom-left-light.png" />
+        <img class="topRightLight animate__animated animate__fadeInDown" alt="" src="assets/img/top-right-light.png" />
+        <img class="bottomRightLight animate__animated animate__fadeInUp" alt=""
+            src="assets/img/bottom-right-light.png" />
+
+    </div>

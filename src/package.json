@@ -25,6 +25,7 @@
     "@angular/router": "11.0.5",
     "@glidejs/glide": "3.4.1",
     "@material/checkbox": "^13.0.0",
+    "agora-access-token": "^2.0.4",
     "agora-rtc-sdk-ng": "^4.3.0",
     "angular-agora-rtc": "^0.1.0",
     "angular-notifier": "^6.0.1",
@@ -33,6 +34,7 @@
     "animate.css": "^4.1.1",
     "chart.js": "2.9.4",
     "core-js": "3.8.2",
+    "crypto-browserify": "^3.12.0",
     "jquery": "^3.6.0",
     "jw-bootstrap-switch-ng2": "2.0.5",
     "ng-animate-scroll": "^7.1.0",
@@ -48,6 +50,7 @@
     "rxjs": "6.6.3",
     "rxjs-compat": "6.1.0",
     "smoothscroll-polyfill": "^0.4.4",
+    "stream-browserify": "^3.0.0",
     "tslib": "2.0.3",
     "zone.js": "0.11.3"
   },

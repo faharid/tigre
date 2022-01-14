@@ -32,7 +32,7 @@ export class StreamComponent implements OnInit {
     this.agoraService.client.setClientRole('audience');
     this.assignClientHandlers();
 
-    this.agoraService.client.join('00633c2d8d666114b62a5b8a37bc9cfe6f0IACkZcpyBAZPrO2HvOwyWFz5ICG6j7C6wOaswtN9lYJUZabLuwcAAAAAEABoKgnHs3MpYAEAAQCycylg', 'liga', null, (uid) => {
+    this.agoraService.client.join('0060494621b36bb4145b89d8110bff4732eIAC56vWrY8aMhblTlgO8Y9KuJnvYdgFkCJPHukoU98OGaQx+f9gAAAAAEADC8VeAzQDiYQEAAQDNAOJh', 'test', null, (uid) => {
     })
     
     var body = document.getElementsByTagName("body")[0];
