@@ -83,11 +83,13 @@ export class LiveComponent implements OnInit {
   ngOnInit() {
 
 
+    /*
     this.client = this.agoraService.createClient({ mode: 'live', codec: 'vp8' });
     this.agoraService.client.setClientRole('audience');
     this.assignClientHandlers();
     this.agoraService.client.join('dd3247ba803b47e4a5d55658b7a816f4', 'Broadcast', null, (uid) => {
     });
+    */
 
     this.clientPublico = this.agoraServicePublico.createClient({ mode: 'live', codec: 'vp8' });
     this.agoraServicePublico.client.setClientRole('audience');
