@@ -278,7 +278,11 @@ export class LiveComponent implements OnInit {
       });
       let quality: any = "480p_3";
       localStreamBroadcast.setVideoProfile(quality);
+      localStreamBroadcast.setAudioOutput("", () => {
+      });
       localStreamBroadcast.setAudioVolume(0);
+      localStreamBroadcast.muteAudio();
+
       localStreamBroadcast.init(() => {
         console.log("getUserMedia successfully");
         localStreamBroadcast.play('userCamera');
