@@ -258,6 +258,10 @@ export class LiveComponent implements OnInit {
       this.isPlayingPublico = true;
       this.playingStreamPublico.stop()
       this.playingStreamPublico.play(this.streamIdPublico);
+      this.playingStreamPublico.setAudioOutput("", () => {
+      });
+      this.playingStreamPublico.setAudioVolume(0);
+      this.playingStreamPublico.muteAudio();
     }
 
   }
