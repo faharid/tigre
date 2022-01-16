@@ -1,252 +1,46 @@
-<nav
-  class="navbar navbar-expand-lg fixed-top navbar-transparent"
-  color-on-scroll="300"
-  id="navbar-top"
->
+<nav class="navbar navbar-expand-lg navbar-transparent" color-on-scroll="300" id="navbar-top">
   <div class="container">
-    <div class="navbar-translate">
-      <button
-        aria-controls="navigation-index"
-        aria-label="Toggle navigation"
-        class="navbar-toggler"
-        [attr.aria-expanded]="!isCollapsed"
-        (click)="isCollapsed = !isCollapsed"
-        id="navigation"
-        type="button"
-      >
-        <span class="navbar-toggler-bar bar1"> </span>
-        <span class="navbar-toggler-bar bar2"> </span>
-        <span class="navbar-toggler-bar bar3"> </span>
-      </button>
-    </div>
-    <div class="navbar-collapse" [collapse]="isCollapsed" id="navigation">
-      <div class="navbar-collapse-header">
-        <div class="row">
-          <div class="col-6 collapse-brand">
-          </div>
-          <div class="col-6 collapse-close text-right">
-            <button
-              aria-controls="navigation-index"
-              aria-label="Toggle navigation"
-              class="navbar-toggler"
-              [attr.aria-expanded]="!isCollapsed"
-              (click)="isCollapsed = !isCollapsed"
-              id="navigation"
-              type="button"
-            >
-              <i class="tim-icons icon-simple-remove"> </i>
-            </button>
-          </div>
-        </div>
-      </div>
-      <ul class="navbar-nav ml-auto">
-        <li class="dropdown nav-item" dropdown>
-          <a
-            class="dropdown-toggle nav-link dropdown-toggle"
-            data-toggle="dropdown"
-            dropdownToggle
-          >
-            <i class="fa fa-cogs d-lg-none d-xl-none"> </i> Getting started
-          </a>
-          <div class="dropdown-menu dropdown-with-icons" *dropdownMenu>
-            <a class="dropdown-item" [routerLink]="['components']">
-              <i class="tim-icons icon-paper"> </i> Components
-            </a>
-            <a class="dropdown-item" [routerLink]="['presentation']">
-              <i class="tim-icons icon-bullet-list-67"> </i> Presentation Page
-            </a>
-            <a
-              class="dropdown-item"
-              href="https://demos.creative-tim.com/blk-design-system-pro-angular/#/documentation/overview"
-            >
-              <i class="tim-icons icon-book-bookmark"> </i> Documentation
-            </a>
-          </div>
-        </li>
-        <li class="nav-item dropdown" dropdown>
-          <a
-            class="nav-link dropdown-toggle dropdown-toggle"
-            data-toggle="dropdown"
-            dropdownToggle
-            id="navbarDropdownMenuLink"
-          >
-            <i aria-hidden="true" class="tim-icons icon-paper"> </i>
-            <p>Sections</p>
-          </a>
-          <div
-            aria-labelledby="navbarDropdownMenuLink"
-            class="dropdown-menu dropdown-menu-right"
-            *dropdownMenu
-          >
-            <a
-              class="dropdown-item"
-              [routerLink]="['sections']"
-              [fragment]="'headers'"
-            >
-              <i class="tim-icons icon-app"> </i> Headers
-            </a>
-            <a
-              class="dropdown-item"
-              [routerLink]="['sections']"
-              [fragment]="'features'"
-            >
-              <i class="tim-icons icon-settings"> </i> Features
-            </a>
-            <a
-              class="dropdown-item"
-              [routerLink]="['sections']"
-              [fragment]="'blogs'"
-            >
-              <i class="tim-icons icon-align-left-2"> </i> Blogs
-            </a>
-            <a
-              class="dropdown-item"
-              [routerLink]="['sections']"
-              [fragment]="'teams'"
-            >
-              <i class="tim-icons icon-user-run"> </i> Teams
-            </a>
-            <a
-              class="dropdown-item"
-              [routerLink]="['sections']"
-              [fragment]="'projects'"
-            >
-              <i class="tim-icons icon-paper"> </i> Projects
-            </a>
-            <a
-              class="dropdown-item"
-              [routerLink]="['sections']"
-              [fragment]="'pricing'"
-            >
-              <i class="tim-icons icon-money-coins"> </i> Pricing
-            </a>
-            <a
-              class="dropdown-item"
-              [routerLink]="['sections']"
-              [fragment]="'testimonials'"
-            >
-              <i class="tim-icons icon-chat-33"> </i> Testimonials
-            </a>
-            <a
-              class="dropdown-item"
-              [routerLink]="['sections']"
-              [fragment]="'contactus'"
-            >
-              <i class="tim-icons icon-mobile"> </i> Contact Us
-            </a>
-            <a
-              class="dropdown-item"
-              [routerLink]="['sections']"
-              [fragment]="'tables'"
-            >
-              <i class="tim-icons icon-chart-bar-32"> </i> Tables
-            </a>
-            <a
-              class="dropdown-item"
-              [routerLink]="['sections']"
-              [fragment]="'accordion'"
-            >
-              <i class="tim-icons icon-paper"> </i> Accordion
-            </a>
-          </div>
-        </li>
-        <li
-          class="nav-item dropdown"
-          dropdown
-          [autoClose]="autoclose"
-          (clickOutside)="autoclose = true"
-        >
-          <a
-            class="nav-link dropdown-toggle dropdown-toggle"
-            data-toggle="dropdown"
-            dropdownToggle
-            id="navbarDropdownMenuLink"
-            (click)="autoclose = false"
-          >
-            <i aria-hidden="true" class="tim-icons icon-book-bookmark"> </i>
-            <p>Examples</p>
-          </a>
-          <div
-            aria-labelledby="navbarDropdownMenuLink"
-            class="dropdown-menu dropdown-menu-right"
-            *dropdownMenu
-          >
-            <a class="dropdown-item" [routerLink]="['about-us']">
-              <i class="tim-icons icon-bulb-63"> </i> About-us
-            </a>
-            <a class="dropdown-item" [routerLink]="['blogpost']">
-              <i class="tim-icons icon-align-center"> </i> Blog Post
-            </a>
-            <a class="dropdown-item" [routerLink]="['blogposts']">
-              <i class="tim-icons icon-chart-bar-32"> </i> Blog Posts
-            </a>
-            <a class="dropdown-item" [routerLink]="['contact-us']">
-              <i class="tim-icons icon-square-pin"> </i> Contact Us
-            </a>
-            <a class="dropdown-item" [routerLink]="['landing']">
-              <i class="tim-icons icon-paper"> </i> Landing Page
-            </a>
-            <a class="dropdown-item" [routerLink]="['pricing']">
-              <i class="tim-icons icon-coins"> </i> Pricing
-            </a>
-            <a class="dropdown-item" [routerLink]="['ecommerce']">
-              <i class="tim-icons icon-basket-simple"> </i> Ecommerce Page
-            </a>
-            <a class="dropdown-item" [routerLink]="['product']">
-              <i class="tim-icons icon-bag-16"> </i> Product Page
-            </a>
-            <a class="dropdown-item" [routerLink]="['profile']">
-              <i class="tim-icons icon-lock-circle"> </i> Profile Page
-            </a>
-            <a class="dropdown-item" [routerLink]="['error']">
-              <i class="tim-icons icon-button-power"> </i> 404 Error Page
-            </a>
-            <a class="dropdown-item" [routerLink]="['error500']">
-              <i class="tim-icons icon-alert-circle-exc"> </i> 500 Error Page
-            </a>
-            <div class="dropdown" dropdown>
-              <a
-                class="dropdown-item dropdown-toggle dropdown-toggle"
-                data-toggle="dropdown"
-                dropdownToggle
-                id="navbarDropdown2"
-                (click)="$event.preventDefault()"
-                href="#ceva"
-              >
-                <i aria-hidden="true" class="tim-icons icon-book-bookmark"> </i>
-                App Pages
-              </a>
-              <div
-                aria-labelledby="navbarDropdown2"
-                class="dropdown-menu"
-                *dropdownMenu
-              >
-                <a class="dropdown-item" [routerLink]="['account-settings']">
-                  <i class="tim-icons icon-lock-circle"> </i> Account Settings
-                </a>
-                <a class="dropdown-item" [routerLink]="['login']">
-                  <i class="tim-icons icon-tablet-2"> </i> Login Page
-                </a>
-                <a class="dropdown-item" [routerLink]="['register']">
-                  <i class="tim-icons icon-laptop"> </i> Register Page
-                </a>
-                <a class="dropdown-item" [routerLink]="['reset']">
-                  <i class="tim-icons icon-molecule-40"> </i> Reset Page
-                </a>
-                <a class="dropdown-item" [routerLink]="['invoice']">
-                  <i class="tim-icons icon-notes"> </i> Invoice Page
-                </a>
-                <a class="dropdown-item" [routerLink]="['checkout']">
-                  <i class="tim-icons icon-basket-simple"> </i> Checkout Page
-                </a>
-                <a class="dropdown-item" [routerLink]="['chat']">
-                  <i class="tim-icons icon-email-85"> </i> Chat Page
-                </a>
-              </div>
-            </div>
-          </div>
-        </li>
-      </ul>
-    </div>
+
+    <ng-container *ngIf="!getToken()">
+      <a [routerLink]="['home']" [ngStyle]="{'font-weight' : path == '/home' ? 'bold' : 'normal'}">
+        INICIO
+      </a>
+
+      <a [routerLink]=" ['login']" [ngStyle]="{'font-weight' : path == '/login' ? 'bold' : 'normal'}">
+        INGRESAR
+      </a>
+
+      <a [routerLink]=" ['register']" [ngStyle]="{'font-weight' : path == '/register' ? 'bold' : 'normal'}">
+        REGISTRO
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="getToken()">
+      <a [routerLink]="['line-up']" [ngStyle]="{'font-weight' : path == '/line-up' ? 'bold' : 'normal'}">
+        LINE UP DEL DÍA
+      </a>
+
+      <a [routerLink]="['live']">
+        ESCENARIO
+      </a>
+
+      <a [routerLink]="['board']" [ngStyle]="{'font-weight' : path == '/board' ? 'bold' : 'normal'}">
+        DEJA TU HUELLA
+      </a>
+
+      <a [routerLink]="['concurso']" [ngStyle]="{'font-weight' : path == '/concurso' ? 'bold' : 'normal'}">
+        CONCURSO
+      </a>
+
+      <a (click)="logout()" [ngStyle]="{'font-weight' : path == '/exit' ? 'bold' : 'normal'}">
+        SALIR
+      </a>
+
+    </ng-container>
+
   </div>
+
+  <img class="animate__animated animate__fadeIn" alt="" src="assets/img/logo.png"
+    style="height: 70px; object-fit: contain; width: 100%; margin-top: 5px; margin-bottom: 0px; display: block;" />
+
 </nav>

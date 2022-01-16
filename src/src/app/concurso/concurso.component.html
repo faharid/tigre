@@ -1,0 +1,137 @@
+<!-- 
+<div class="wrapper background" (scroll)="onScroll($event)">
+  <div class="page-header">
+    <div class="container">
+      <div class="content-center space-liga">
+
+        <div *ngIf="!start" style="width: 90%; max-width: 800px; height: 50vh; margin: auto;">
+          <a style="cursor: pointer;" (click)="startQuestions()">
+            <img alt="" src="assets/img/earth.jpg" />
+          </a>
+        </div>
+
+        <div *ngIf="start">
+
+          <div *ngFor="let question of questions; index as i">
+            <mat-card class="example-card animate__animated animate__headShake" *ngIf="actualIndex == i"
+              [ngStyle]="{'opacity' : visible ? 1 : 0}" [@slideInOut]=transition>
+              <mat-card-title>{{questions[actualIndex]}}</mat-card-title>
+              <mat-card-subtitle></mat-card-subtitle>
+              <mat-card-content>
+                <p>This card indeterminates progress bar.</p>
+
+                <img alt="Card image" class="card-img" src="assets/img/earth.jpg" />
+
+                <mat-radio-group style="margin-top: 20px; display: block;">
+
+                  <div class="row">
+                    <div class="col-sm">
+                      <mat-radio-button class="radio-button" value="1">Respuesta 1</mat-radio-button>
+                    </div>
+                    <div class="col-sm">
+                      <mat-radio-button class="radio-button" value="2">Respuesta 2</mat-radio-button>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm">
+                      <mat-radio-button class="radio-button" value="3">Respuesta 3</mat-radio-button>
+                    </div>
+                    <div class="col-sm">
+                      <mat-radio-button class="radio-button" value="4">Respuesta 4</mat-radio-button>
+                    </div>
+                  </div>
+
+                </mat-radio-group>
+              </mat-card-content>
+              <mat-card-actions style="display: inline-flex;">
+
+                <button mat-button (click)="previousQuestion()" style="color: white; background: #327bbb;"
+                  [ngStyle]="{'opacity' : actualIndex == 0 ? 0.5 : 1}">ANTERIOR</button>
+                <div style="width: 50px;"></div>
+
+                <button *ngIf="actualIndex != questions.length - 1" mat-button (click)="nextQuestion()"
+                  style="color: white; background: #327bbb;">SIGUIENTE</button>
+
+                <button *ngIf="actualIndex == questions.length - 1" mat-button (click)="sendQuestions()"
+                  style="color: white; background: #349f34;">FINALIZAR</button>
+
+              </mat-card-actions>
+            </mat-card>
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+  </div>
+</div>
+<notifier-container style="position: absolute;
+  bottom: 0;"></notifier-container>
+
+
+  -->
+
+
+
+<div>
+
+  <div *ngIf="!start" style="width: 90%; max-width: 800px; height: 50vh; margin: auto;">
+    <a style="cursor: pointer;" (click)="startQuestions()">
+      <img alt="" src="assets/img/earth.jpg" />
+    </a>
+  </div>
+
+  <div *ngIf="start">
+
+    <div *ngFor="let question of questions; index as i">
+      <mat-card class="example-card animate__animated animate__headShake" *ngIf="actualIndex == i"
+        [ngStyle]="{'opacity' : visible ? 1 : 0}" [@slideInOut]=transition>
+        <mat-card-title>{{questions[actualIndex]}}</mat-card-title>
+        <mat-card-subtitle></mat-card-subtitle>
+        <mat-card-content>
+          <p style="margin: 20px;">This card indeterminates progress bar.</p>
+
+          <img alt="Card image" class="card-img" src="assets/img/earth.jpg" />
+
+          <mat-radio-group style="margin-top: 20px; display: block;">
+
+            <div class="row">
+              <div class="col-sm">
+                <mat-radio-button class="radio-button" value="1">Respuesta 1</mat-radio-button>
+              </div>
+              <div class="col-sm">
+                <mat-radio-button class="radio-button" value="2">Respuesta 2</mat-radio-button>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-sm">
+                <mat-radio-button class="radio-button" value="3">Respuesta 3</mat-radio-button>
+              </div>
+              <div class="col-sm">
+                <mat-radio-button class="radio-button" value="4">Respuesta 4</mat-radio-button>
+              </div>
+            </div>
+
+          </mat-radio-group>
+        </mat-card-content>
+        <mat-card-actions style="text-align: center; display: block ruby;">
+
+          <button mat-button (click)="previousQuestion()" style="color: white; background: #327bbb;"
+            [ngStyle]="{'opacity' : actualIndex == 0 ? 0.5 : 1}">ANTERIOR</button>
+          <div style="width: 50px;"></div>
+
+          <button *ngIf="actualIndex != questions.length - 1" mat-button (click)="nextQuestion()"
+            style="color: white; background: #327bbb;">SIGUIENTE</button>
+
+          <button *ngIf="actualIndex == questions.length - 1" mat-button (click)="sendQuestions()"
+            style="color: white; background: #349f34;">FINALIZAR</button>
+
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </div>
+
+</div>

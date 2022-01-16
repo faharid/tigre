@@ -1,0 +1,11 @@
+<div class="container">
+    <div class="content-center space-liga" style="overflow: auto;">
+
+        <div class="canvas-container">
+            <img alt="" src="" style="background-color: transparent; width: 900px; height: 600px; position: absolute;"
+                *ngFor="let image of images" [src]="image" />
+            <canvas #canvas></canvas>
+        </div>
+
+    </div>
+</div>

@@ -24,7 +24,7 @@ import { TimepickerModule } from "ngx-bootstrap/timepicker";
 import { CustomFormsModule } from 'ngx-custom-validators';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 
-import { LazyLoadImageModule } from 'ng-lazyload-image'; 
+import { LazyLoadImageModule } from 'ng-lazyload-image';
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
@@ -42,18 +42,32 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NavbarComponent } from "./navbar/navbar.component";
 
+
+//LOCAL STORAGE
+import { NgxWebstorageModule } from 'ngx-webstorage';
+import { LoginComponent } from './login/login.component';
+import { ConcursoComponent } from './concurso/concurso.component';
+
+//MATERIAL
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatRadioModule } from '@angular/material/radio';
+import { BoardComponent } from './board/board.component';
+import { LineUpComponent } from './line-up/line-up.component';
+
 const customNotifierOptions: NotifierOptions = {
   position: {
-		horizontal: {
-			position: 'right',
-			distance: 12
-		},
-		vertical: {
-			position: 'top',
-			distance: 12,
-			gap: 10
-		}
-	},
+    horizontal: {
+      position: 'right',
+      distance: 12
+    },
+    vertical: {
+      position: 'top',
+      distance: 12,
+      gap: 10
+    }
+  },
   //theme: 'material',
   behaviour: {
     autoHide: 3000,
@@ -84,9 +98,9 @@ const customNotifierOptions: NotifierOptions = {
 };
 
 const agoraConfig: AgoraConfig = {
-  AppID: '33c2d8d666114b62a5b8a37bc9cfe6f0',
+  AppID: 'dd3247ba803b47e4a5d55658b7a816f4',
 };
-  
+
 @NgModule({
   declarations: [
     HomeComponent,
@@ -96,7 +110,11 @@ const agoraConfig: AgoraConfig = {
     RegisterComponent,
     FinishComponent,
     AppComponent,
-    NavbarComponent
+    NavbarComponent,
+    LoginComponent,
+    ConcursoComponent,
+    BoardComponent,
+    LineUpComponent
   ],
   imports: [
     BrowserModule,
@@ -127,10 +145,15 @@ const agoraConfig: AgoraConfig = {
     NgxAgoraModule.forRoot(agoraConfig),
     CustomFormsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxWebstorageModule.forRoot(),
+    MatCardModule,
+    MatButtonModule,
+    MatCheckboxModule,
+    MatRadioModule
   ],
   providers: [BackendService,
-              AuthGuard],
+    AuthGuard],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

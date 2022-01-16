@@ -3,6 +3,11 @@ import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./home/home.component";
 import { LiveComponent } from "./live/live.component";
 import { RegisterComponent } from "./register/register.component";
+import { LoginComponent } from "./login/login.component";
+import { ConcursoComponent } from "./concurso/concurso.component";
+import { BoardComponent } from "./board/board.component";
+import { LineUpComponent } from "./line-up/line-up.component";
+
 import { FinishComponent } from "./finish/finish.component";
 import { StreamComponent } from "./stream/stream.component";
 import { BroadcastComponent } from "./broadcast/broadcast.component";
@@ -11,16 +16,20 @@ import { AuthGuard } from './services/guards/auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
-  //{ path: 'live', component: LiveComponent },
   { path: 'register', component: RegisterComponent },
-  //{ path: 'stream', component: StreamComponent },
-  //{ path: 'broadcast', component: BroadcastComponent },
-  { path: '**', redirectTo: 'home', pathMatch: "full"}
+  { path: 'login', component: LoginComponent },
+  { path: 'concurso', component: ConcursoComponent },
+  { path: 'board', component: BoardComponent },
+  { path: 'live', component: LiveComponent },
+  { path: 'stream', component: StreamComponent },
+  { path: 'line-up', component: LineUpComponent },
+  { path: 'broadcast', component: BroadcastComponent },
+  { path: '**', redirectTo: 'home', pathMatch: "full" }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { 
+    RouterModule.forRoot(routes, {
       useHash: false,
       scrollPositionRestoration: "enabled",
       anchorScrolling: "enabled",
@@ -29,4 +38,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }
