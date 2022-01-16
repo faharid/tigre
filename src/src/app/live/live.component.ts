@@ -212,6 +212,13 @@ export class LiveComponent implements OnInit {
     this.clientPublico.on(ClientEvent.RemoteStreamSubscribed, evt => {
       const stream = evt.stream as Stream;
       this.playingStreamPublico = stream;
+      this.playingStreamPublico.setAudioOutput("", () => {
+      });
+      this.playingStreamPublico.setAudioVolume(0);
+      this.playingStreamPublico.muteAudio();
+
+      console.log("playingStreamPublico");
+
       const id = this.getRemoteId(stream);
       this.streamIdPublico = id;
       if (!this.remoteCallsPublico.length) {
@@ -258,6 +265,8 @@ export class LiveComponent implements OnInit {
       this.isPlayingPublico = true;
       this.playingStreamPublico.stop()
       this.playingStreamPublico.play(this.streamIdPublico);
+      this.playingStreamPublico.setAudioOutput("", () => {
+      });
       this.playingStreamPublico.setAudioVolume(0);
       this.playingStreamPublico.muteAudio();
     }
