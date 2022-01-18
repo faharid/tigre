@@ -2,3 +2,13 @@
     <app-navbar></app-navbar>
     <router-outlet></router-outlet>
 </div>
+
+<img #topLeftLight class="topLeftLight animate__animated animate__fadeInDown" alt="" src="assets/img/top-left-light.png"
+    [ngClass]="{
+    animate__animated: animatedActive, animate__fadeInDown: animatedActive}" />
+<img #bottomLeftLight class="bottomLeftLight" alt="" src="assets/img/bottom-left-light.png" [ngClass]="{
+        animate__animated: animatedActive, animate__fadeInUp: animatedActive}" />
+<img #topRightLight class="topRightLight" alt="" src="assets/img/top-right-light.png" [ngClass]="{
+            animate__animated: animatedActive, animate__fadeInDown: animatedActive}" />
+<img #bottomRightLight class="bottomRightLight" alt="" src="assets/img/bottom-right-light.png" [ngClass]="{
+        animate__animated: animatedActive, animate__fadeInUp: animatedActive}" />

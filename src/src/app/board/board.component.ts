@@ -3,10 +3,11 @@ import {
   Input,
   ElementRef,
   AfterViewInit, OnInit,
-  ViewChild
+  ViewChild,
 } from '@angular/core';
-import { fromEvent } from 'rxjs';
+import { fromEvent, Observable, Subscription } from 'rxjs';
 import { switchMap, takeUntil, pairwise } from 'rxjs/operators';
+import { timer } from 'rxjs';
 
 @Component({
   selector: 'app-board',
@@ -24,11 +25,43 @@ export class BoardComponent implements OnInit, AfterViewInit {
   colors = ["blue", "red", "black", "brown", "yellow", "blueviolet", "darkblue", "chocolate", "darkmagenta", "darkgreen", "dodgerblue", "forestgreen", "navy", "steelblue", "tomato"];
 
 
+  //MIRO
+  resizeObservable$: Observable<Event>
+  resizeSubscription$: Subscription
+
+  @ViewChild('board') boardElement: ElementRef;
+  @ViewChild('ipad') ipadElement: ElementRef;
+
+  boardHeight: number;
+  boardWidth: number;
+
+
   public ngOnInit() {
-    setInterval(() => { this.reloadImages() }, 1 * 1000);
+
+    //setInterval(() => { this.reloadImages() }, 1 * 1000);
+
+    this.resizeObservable$ = fromEvent(window, 'resize')
+    this.resizeSubscription$ = this.resizeObservable$.subscribe(evt => {
+      let height = this.ipadElement.nativeElement.offsetHeight;
+      let width = this.ipadElement.nativeElement.offsetWidth;
+
+      this.boardHeight = height;
+      this.boardWidth = width;
+    })
+
   }
 
   public ngAfterViewInit() {
+
+    timer(1000).subscribe(x => {
+      let height = this.ipadElement.nativeElement.offsetHeight;
+      let width = this.ipadElement.nativeElement.offsetWidth;
+
+      this.boardHeight = height;
+      this.boardWidth = width;
+
+    });
+
     this.canvasEl = this.canvas?.nativeElement;
 
     this.cx = this.canvasEl.getContext('2d');

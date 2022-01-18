@@ -1,5 +1,11 @@
-import { Component, OnInit, ChangeDetectorRef } from "@angular/core";
+import { Component, OnInit, ChangeDetectorRef, ElementRef, ViewChild } from "@angular/core";
 import { NgxAgoraService, Stream, AgoraClient, ClientEvent } from 'ngx-agora';
+
+//SERVICES
+import { ChatService } from '../services/chat.service';
+import { Observable, timer } from "rxjs";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+
 
 @Component({
   selector: "app-live",
@@ -14,6 +20,7 @@ export class LiveComponent implements OnInit {
   streamId = "";
   isPlaying = false;
   remoteCalls: string[] = [];
+  exampleCalls: string[] = ["", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", ""];
 
 
   //PUBLICO
@@ -62,30 +69,32 @@ export class LiveComponent implements OnInit {
     placeholder: 'Calidad',
   }
 
+  //CHAT
+  messages: Observable<any[]>;
+  valForm: FormGroup;
 
+  @ViewChild('chatContainer') chatContainer: ElementRef;
+  scrolltop: number = null;
 
   constructor(
     private agoraService: NgxAgoraService,
     private agoraServicePublico: NgxAgoraService,
     private agoraServiceBroadcast: NgxAgoraService,
     private cdr: ChangeDetectorRef,
+    private chat: ChatService,
+    fb: FormBuilder,
   ) {
     this.agoraService.createClient({
       mode: 'live', codec: 'vp8'
-    })
+    });
+
+    this.valForm = fb.group({
+      'message': ["", Validators.required],
+    });
   }
 
-
-  //public id = this.route.snapshot.params['id'];
-  //public chanel = Math.floor(Math.random() * 100);
-
-
   ngOnInit() {
-    /*
 
-    
-
-    */
     this.agoraServiceBroadcast.client.getCameras((devices) => {
       for (let i = 0; i < devices.length; i++) {
         this.data.push({ id: devices[i].deviceId, name: "Cámara " + (i + 1) })
@@ -110,13 +119,12 @@ export class LiveComponent implements OnInit {
 
     });
 
+    //CHAT
+    this.messages = this.chat.getMessages().valueChanges();
 
 
 
-    /*
-    this.agoraServicePublico.client.join('dd3247ba803b47e4a5d55658b7a816f4', 'Publico', null, (uid) => {
-    });
-    */
+
 
   }
 
@@ -217,8 +225,6 @@ export class LiveComponent implements OnInit {
       this.playingStreamPublico.setAudioVolume(0);
       this.playingStreamPublico.muteAudio();
 
-      console.log("playingStreamPublico");
-
       const id = this.getRemoteId(stream);
       this.streamIdPublico = id;
       if (!this.remoteCallsPublico.length) {
@@ -317,5 +323,17 @@ export class LiveComponent implements OnInit {
     this.quality = obj;
   }
 
+
+  sendMessage() {
+    if (this.valForm.get("message").valid) {
+      this.chat.sendMessage(this.valForm.get("message").value);
+      this.valForm.get("message").setValue("");
+
+      timer(500).subscribe(x => {
+        this.scrolltop = this.chatContainer.nativeElement.scrollHeight;
+      });
+
+    }
+  }
 
 }

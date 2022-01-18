@@ -1,3 +1,7 @@
+.container {
+    max-width: 95% !important;
+}
+
 .backgroundContainer {
     position: absolute;
     width: 100%;
@@ -41,7 +45,7 @@
 .topLeftLight {
     position: absolute;
     left: 0px;
-    top: 0px;
+    top: 50px;
     max-width: 30%;
     min-width: 300px;
     object-fit: contain;
@@ -60,7 +64,7 @@
 .topRightLight {
     position: absolute;
     right: 0px;
-    top: 0px;
+    top: 50px;
     max-width: 30%;
     min-width: 300px;
     object-fit: contain;

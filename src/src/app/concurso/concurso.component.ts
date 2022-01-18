@@ -45,7 +45,7 @@ export class ConcursoComponent implements OnInit {
   transition = "center";
   visible = true;
   start = false;
-
+  showGanadores = false;
 
   constructor(public notifierService: NotifierService,
     fb: FormBuilder) {

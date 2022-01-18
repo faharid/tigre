@@ -42,7 +42,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { NavbarComponent } from "./navbar/navbar.component";
 
-
 //LOCAL STORAGE
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { LoginComponent } from './login/login.component';
@@ -55,6 +54,17 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { BoardComponent } from './board/board.component';
 import { LineUpComponent } from './line-up/line-up.component';
+
+//CHAT
+import { ChatService } from './services/chat.service';
+
+//FIREBASE
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
+
+//FIREBASE ENVIROMENT
+import { environment } from 'src/environments/environment';
 
 const customNotifierOptions: NotifierOptions = {
   position: {
@@ -114,7 +124,7 @@ const agoraConfig: AgoraConfig = {
     LoginComponent,
     ConcursoComponent,
     BoardComponent,
-    LineUpComponent
+    LineUpComponent,
   ],
   imports: [
     BrowserModule,
@@ -150,10 +160,14 @@ const agoraConfig: AgoraConfig = {
     MatCardModule,
     MatButtonModule,
     MatCheckboxModule,
-    MatRadioModule
+    MatRadioModule,
+    AngularFireModule,
+    AngularFireAuthModule,
+    AngularFireDatabaseModule,
+    AngularFireModule.initializeApp(environment.firebase)
   ],
   providers: [BackendService,
-    AuthGuard],
+    AuthGuard, ChatService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

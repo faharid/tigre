@@ -12,7 +12,6 @@ import { LocalStorageService } from 'ngx-webstorage';
 import { HttpClient } from '@angular/common/http';
 
 
-
 @Component({
   selector: "app-login",
   templateUrl: "./login.component.html",
@@ -54,6 +53,7 @@ export class LoginComponent implements OnInit {
     })
     var body = document.getElementsByTagName("body")[0];
     body.classList.add("register-page");
+
   }
 
   submitForm($ev, value: any) {
@@ -112,5 +112,8 @@ export class LoginComponent implements OnInit {
   goToMain(): void {
     this.router.navigateByUrl("/line-up");
   }
+
+
+
 
 }

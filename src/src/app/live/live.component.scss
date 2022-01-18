@@ -180,3 +180,49 @@ img.ng-lazyloaded {
     top: 0px;
     bottom: 0px;
 }
+
+#player_undefined {
+    border-radius: 20px;
+}
+
+.bottomSeats {
+    background-image: url("/assets/img/seats.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    margin-top: -20px;
+    position: absolute;
+    width: 100%;
+    height: 250px;
+    margin: auto;
+}
+
+.message {
+    margin: 10px;
+    background: #09099b;
+    color: white;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+textarea {
+    height: 100%;
+    padding: 10px;
+    width: 95%;
+    margin: auto;
+    display: block;
+    border-radius: 10px;
+}
+
+.chatContainer::-webkit-scrollbar {
+    display: none !important;
+}
+
+.chatContainer {
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
+}

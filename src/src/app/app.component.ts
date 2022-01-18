@@ -1,16 +1,15 @@
 import {
   Component,
-  OnInit,
-  Renderer2,
-  HostListener,
-  Inject
+  OnInit, Inject, ElementRef, ViewChild, AfterViewInit
 } from "@angular/core";
 import { Location } from "@angular/common";
 import { DOCUMENT } from "@angular/common";
 
 //LOCAL STORAGE
 import { LocalStorageService } from 'ngx-webstorage';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { filter } from "rxjs/operators";
+import { timer } from "rxjs";
 
 
 @Component({
@@ -18,13 +17,16 @@ import { Router } from '@angular/router';
   templateUrl: "./app.component.html",
   styleUrls: ["./app.component.scss"]
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
 
-  //LOCAL STORAGE
-  //localStorage: CoolLocalStorage;
+
+  @ViewChild('topRightLight') topRightLight: ElementRef;
+  @ViewChild('topLeftLight') topLeftLight: ElementRef;
+  @ViewChild('bottomLeftLight') bottomLeftLight: ElementRef;
+  @ViewChild('bottomRightLight') bottomRightLight: ElementRef;
+  animatedActive = true;
 
   constructor(
-    private renderer: Renderer2,
     public location: Location,
     private localStorage: LocalStorageService,
     private router: Router,
@@ -34,24 +36,9 @@ export class AppComponent implements OnInit {
   }
 
 
-  @HostListener("window:scroll", ["$event"])
-  onWindowScroll(e) {
-    if (window.pageYOffset > 300) {
-      var element = document.getElementById("navbar-top");
-      /* if (element) {
-        element.classList.remove("navbar-transparent");
-        element.classList.add("bg-danger");
-      } */
-    } else {
-      var element = document.getElementById("navbar-top");
-      /* if (element) {
-        element.classList.add("navbar-transparent");
-        element.classList.remove("bg-danger");
-      } */
-    }
-  }
+
+
   ngOnInit() {
-    this.onWindowScroll(event);
 
     /*
     if (this.getToken()) {
@@ -60,6 +47,32 @@ export class AppComponent implements OnInit {
       this.goToHome();
     }
     */
+
+    timer(1000).subscribe(x => {
+      this.animatedActive = false;
+    });
+
+  }
+
+  public ngAfterViewInit() {
+
+
+    timer(1000).subscribe(x => {
+
+      this.router.events
+        .pipe(filter(event => event instanceof NavigationEnd))
+        .subscribe((event: NavigationEnd) => {
+
+          this.animatedActive = true;
+
+          timer(1000).subscribe(x => {
+            this.animatedActive = false;
+          });
+
+
+        });
+
+    });
 
   }
 

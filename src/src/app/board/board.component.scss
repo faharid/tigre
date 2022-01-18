@@ -20,3 +20,7 @@ canvas {
         //width: 100%;
     }
 }
+
+ui-slot {
+    display: none !important;
+}
