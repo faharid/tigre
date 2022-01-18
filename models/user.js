@@ -6,6 +6,9 @@ const UserSchema = mongoose.Schema({
         type: String,
         unique: true,
     },
+    password: {
+        type: String
+    },
     nombre: {
         type: String
     },
@@ -23,29 +26,45 @@ const UserSchema = mongoose.Schema({
 const User = module.exports = mongoose.model('User',UserSchema);
 
 //Obtiene Users
-module.exports.getUsers = function(callback){
-    User.find(callback);
+module.exports.getUsers = async function(){
+    return await User.find().select({password:0});
 }
 
 //Obtiene User
-module.exports.getUserByEmail = function(email,callback){
-    const query = {
+module.exports.getUserByEmail = async function(email){
+    return await User.findOne({
         email: email
-    }
-    User.findOne(query, callback);
+    });
 }
 
 //Obtiene User por Id
-module.exports.getUser = function(id,callback){
-    User.findById(id, callback);
+module.exports.getUser = async function(_id){
+    return await User.findById(_id).select({password:0});
+}
+
+//Obtiene User por Id
+module.exports.getUserById = async function(_id){
+    return await User.findById(_id);
 }
 
 //Crear User
-module.exports.createUser = function(newUser, callback){ 
-    newUser.save(callback);
+module.exports.createUser = async function(_newUser){ 
+    return await User.create(_newUser);
+}
+
+//Modificar User
+module.exports.updateUser = async function(_user){ 
+    return await User.findByIdAndUpdate(_user._id,{
+        email: _user.email,
+        password: _user.password,
+        nombre: _user.nombre,
+        apellido: _user.apellido,
+        cedula: _user.cedula,
+        numero: _user.numero
+    });
 }
 
 //Eliminar User
-module.exports.deleteUser = function(id,callback){
-    User.findByIdAndDelete(id,callback);
+module.exports.deleteUser = async function(_id){
+    return await User.findByIdAndDelete(_id);
 }

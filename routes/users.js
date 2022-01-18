@@ -1,172 +1,125 @@
 const express = require('express');
 const router = express.Router();
-const nodemailer = require("nodemailer");
 const User = require('../models/user');
+const bcrypt = require('bcrypt');
+const jwt = require("jsonwebtoken");
+const { authorization } = require('../utils/authentication')
 
 // Create User
-router.put('/', (req, res, next) => {
-    User.getUserByEmail(req.body.email, (err,one)=>{
-        if(err){
-            res.json({success: false, msg:'Error de registro'});
+router.put('/', async (req, res, next) => {
+    try {
+        const user = await User.getUserByEmail(req.body.email)
+        if (user) {
+            res.status(201).json({ msg: "Usuario ya registrado" })
         } else {
-            if(one){
-                res.json({success: true, msg:'User creado', id: one._id});
-            } else {
-                let newUser = new User({
-                    nombre: req.body.nombre,
-                    apellido: req.body.apellido,
-                    email: req.body.email,
-                    cedula: req.body.cedula,
-                    numero: req.body.numero
-                });
-                User.createUser(newUser, (err, user) => { 
-                    if(err){
-                        res.json({success: false, msg:'Error de registro'});
-                    } else {
-                        res.json({success: true, msg:'User creado', id: user._id});
-                    }
-                })
-            }
+            req.body.password = await bcrypt.hash(req.body.password ? req.body.password : req.body.cedula, 10)
+            const newUser = await User.createUser(req.body)
+            res.json({ msg: 'Usuario creado', id: newUser._id });
         }
-    })
+    } catch (error) {
+        console.error(error.toString())
+        res.status(500).json({ msg: "Error al crear el registro" })
+    }
 })
-  
+
 //Get Users
-router.get('/', ( _req, res, next) => {
-    User.getUsers((err, users) => {
-        if(err){
-            console.log(err);
-            return res.json({success: false, msg: 'Error al obtener user'});
+router.get('/', async (req, res, next) => {
+    try {
+        const users = await User.getUsers()
+        if (users.length) {
+            res.json({ users })
         } else {
-            if(!users){
-                return res.json({success: false, msg: 'No existen users'});
-            } else {
-                res.json({
-                success: true, users
-                });
-            };
-        } 
-    });
+            res.status(201).json({ msg: 'No existen registros' })
+        }
+    } catch (error) {
+        console.error(error.toString())
+        return res.status(401).json({ msg: 'Error al encontrar los registros' })
+    }
 });
 
 //Get User by id
-router.get('/:id', (_req, res, next) => {
-    User.getUser(req.params.id,(err,one) => {
-        if(err){
-            return res.json({success: false, msg: 'User no encontrado'});
+router.get('/:id', authorization, async (req, res, next) => {
+    try {
+        const user = await User.getUser(req.params.id)
+        if (user) {
+            res.json({ user })
         } else {
-            if(one){
-                return res.json({success: true, one});
-            } else {
-                return res.json({success: false, msg: 'User no encontrado'});
-            }
+            res.status(201).json({ msg: 'Registro no encontrado' })
         }
-    });
+    } catch (error) {
+        console.error(error.toString())
+        return res.status(401).json({ msg: 'Error al encontrar el registro' })
+    }
 });
+
+
+// Update User
+router.patch('/:id', authorization, async (req, res, next) => {
+    try {
+        const user = await User.getUserById(req.params.id)
+        if (!user) {
+            res.status(201).json({ msg: "Usuario no encontrado" })
+        } else { 
+            let newPassword
+            if (req.body.password) { 
+                if (!req.body.newPassword) return res.status(402).json({ msg: "Se requiere la contraseña nueva"})
+                const verified = await bcrypt.compare(req.body.password, user.password)
+                if (verified) {
+                    newPassword = await bcrypt.hash(req.body.newPassword, 10)
+                } else {
+                    return res.status(402).json({ msg: "Contraseña incorrecta"})
+                } 
+            }
+
+            await User.updateUser({
+                _id: user._id,
+                email: req.body.email ? req.body.email : user.email,
+                password: newPassword ? newPassword : user.password,
+                nombre: req.body.nombre ? req.body.nombre : user.nombre,
+                apellido: req.body.apellido ? req.body.apellido : user.apellido,
+                cedula: req.body.cedula ? req.body.cedula : user.cedula,
+                numero: req.body.numero ? req.body.numero : user.numero
+            })
+            res.json({ msg: 'Registro modificado' });
+        }
+    } catch (error) {
+        console.error(error.toString())
+        res.status(500).json({ msg: "Error al modificar el registro" })
+    }
+})
 
 //Delete User by id
-router.delete('/:id', (req, res, next) => {
-    User.deleteUser(req.body.id,(err) => {
-        if(err){
-        return res.json({success: false, msg: 'Error al eliminar user'});
-        } else {
-        return res.json({success: true, msg: 'User borrada'});
-        }
-    });
+router.delete('/:id', authorization, async (req, res, next) => {
+    try {
+        await User.deleteUser(req.params.id)
+        res.json({ msg: 'Registro eliminado' })
+    } catch (error) {
+        console.error(error.toString())
+        return res.status(401).json({ msg: 'Error al eliminar el registro' })
+    }
 });
 
-//Send Email
-router.post('/send', (req, res, next) => {
-    let image = '';
-    let cid = '';
-    let subject = '';
-
-    if(req.body.type === 'Live'){
-        image = 'promo2.jpg'
-        cid = 'promo2';
-        subject = 'Es Hoy!! Vive la noche blanca';
-    }else{
-        image = 'promo1.jpg'
-        cid = 'promo1';
-        subject = 'Es Hoy!! Soy Martinez Borja';
-    }
-
-    if(req.body.email){
-        var transporter = nodemailer.createTransport({
-            host: 'smtp.titan.email',
-            port: '465',
-            auth: {
-                user: 'admin@soymartinezborja.com',
-                pass: 'X3on.2021'
-            },
-            secure: true, 
-            tls: {
-                rejectUnauthorized:false
-            }
-        });
-    
-        let mailOptions = {
-            from: '"Soy Martinez Borja" <admin@soymartinezborja.com>',
-            to: req.body.email,
-            subject: subject,
-            html: '<img src="cid:' + cid + '"/>',
-            attachments: [{
-                filename: image,
-                path: './settings/'+ image,
-                cid: cid
-            }] 
-        };
-        
-        transporter.sendMail(mailOptions, function(error, info){
-            if (error) {
-                console.log(error);
+//Log in
+router.post('/login', async (req, res, next) => {
+    try {
+        const user = await User.getUserByEmail(req.body.email)
+        if (user) {
+            const verified = await bcrypt.compare(req.body.password, user.password)
+            if (verified) {
+                const token = jwt.sign({user}, process.env.SECRET);
+                return res.cookie("access_token", token, {
+                    httpOnly: true,
+                    secure: process.env.NODE_ENV === "prod",
+                }).status(200).json({ msg: "Autenticacion correcta" });
             } else {
+                return res.status(402).json({ msg: 'Contraseña incorrecta' })
             }
-        });
-        return res.json({success: true, msg: 'Email Enviado'});
-    } else {
-        User.getUsers((err, users) => {
-            if(err){
-                console.log(err);
-                return res.json({success: false, msg: 'Error al obtener user'});
-            } else {
-                for(let i=0;i<users.length;i++){
-                    console.log(users[i].email)
-                    var transporter = nodemailer.createTransport({
-                        host: 'smtp.titan.email',
-                        port: '465',
-                        auth: {
-                            user: 'admin@soymartinezborja.com',
-                            pass: 'X3on.2021'
-                        },
-                        secure: true, 
-                        tls: {
-                            rejectUnauthorized:false
-                        }
-                    });
-                
-                    let mailOptions = {
-                        from: '"Soy Martinez Borja" <admin@soymartinezborja.com>',
-                        to: users[i].email,
-                        subject: subject,
-                        html: '<img src=cid:"' + cid + '"/>',
-                        attachments: [{
-                            filename: image,
-                            path: '../settings/'+ image,
-                            cid: cid
-                        }]
-                    };
-                    
-                    transporter.sendMail(mailOptions, function(error, info){
-                        if (error) {
-                            console.log(error);
-                        } else {
-                        }
-                    }); 
-                }
-                return res.json({success: true, msg: 'Campaña enviada'});
-            } 
-        });    
+        } else {
+            return res.status(404).json({ msg: 'Usuario no encontrado' })
+        }
+    } catch (error) {
+        console.error(error.toString())
+        return res.status(401).json({ msg: 'Error al autenticar el usuario' })
     }
 });
 

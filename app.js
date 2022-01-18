@@ -4,8 +4,10 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const mongoose = require('mongoose');
+const cookieParser = require("cookie-parser");
 const app = express();
 
+app.use(cookieParser());
 app.use(express.json());
 app.use(compression());
 
@@ -36,6 +38,8 @@ mongoose.connection.on('error', (err) => {
 });
 
 const users = require('./routes/users');
+const trivias = require('./routes/trivias');
+const messages = require('./routes/messages');
 
 const port = process.env.PORT || 8080;
 
@@ -52,6 +56,8 @@ app.use(bodyParser.json({limit: '50mb', extended: true}));
 app.use(bodyParser.urlencoded({limit: '50mb', parameterLimit: 50000, extended: true}));
 
 app.use(`/api/${process.env.NODE_ENV}/users`, users);
+app.use(`/api/${process.env.NODE_ENV}/trivias`, trivias);
+app.use(`/api/${process.env.NODE_ENV}/messages`, messages);
 
 // Index Route
 app.get('/', (_req, res) => {
