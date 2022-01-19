@@ -36,34 +36,41 @@
     <div *ngFor="let question of questions; index as i">
       <mat-card class="example-card animate__animated animate__headShake" *ngIf="actualIndex == i"
         [ngStyle]="{'opacity' : visible ? 1 : 0}" [@slideInOut]=transition>
-        <mat-card-title>{{questions[actualIndex]}}</mat-card-title>
-        <mat-card-subtitle></mat-card-subtitle>
+        <mat-card-title>{{questions[actualIndex].question}}</mat-card-title>
+        <mat-card-subtitle
+          style="margin-top: 0px; width: max-content; background: #00b7ff; padding-left: 10px; color: white; border-radius: 11px; font-weight: normal; padding-right: 10px; padding-top: 5px; padding-bottom: 5px;">
+          Pregunta {{questions[actualIndex].index + 1}}</mat-card-subtitle>
         <mat-card-content>
-          <p style="margin: 20px;">This card indeterminates progress bar.</p>
 
           <img alt="Card image" class="card-img" src="assets/img/earth.jpg" />
 
-          <mat-radio-group style="margin-top: 20px; display: block;">
+          <form [formGroup]="answers[question.index]">
+            <mat-radio-group
+              style="margin-top: 20px; display: flex; flex-wrap: wrap; gap: 8%; margin-top: 20px; margin-left: 4%;"
+              formControlName='selected'>
 
-            <div class="row">
-              <div class="col-sm">
-                <mat-radio-button class="radio-button" value="1">Respuesta 1</mat-radio-button>
-              </div>
-              <div class="col-sm">
-                <mat-radio-button class="radio-button" value="2">Respuesta 2</mat-radio-button>
-              </div>
-            </div>
+              <mat-radio-button *ngFor="let option of question.options; index as j" class="radio-button" [value]="j"
+                style="display: flex; width: 44%;">
+                {{option}}</mat-radio-button>
 
-            <div class="row">
-              <div class="col-sm">
-                <mat-radio-button class="radio-button" value="3">Respuesta 3</mat-radio-button>
-              </div>
-              <div class="col-sm">
-                <mat-radio-button class="radio-button" value="4">Respuesta 4</mat-radio-button>
-              </div>
-            </div>
+            </mat-radio-group>
+          </form>
 
-          </mat-radio-group>
+          <!-- 
+
+          <form [formGroup]="answers[i]">
+            <label>
+              <input type="radio" value="Male" formControlName="selected">
+              <span>male</span>
+            </label>
+            <label>
+              <input type="radio" value="Female" formControlName="selected">
+              <span>female</span>
+            </label>
+          </form>
+        -->
+
+
         </mat-card-content>
         <mat-card-actions style="text-align: center; display: block ruby;">
 

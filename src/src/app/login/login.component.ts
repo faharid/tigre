@@ -68,8 +68,18 @@ export class LoginComponent implements OnInit {
         password: this.valForm.value.password,
       };
 
-      this.saveToken("12345678");
 
+      /*
+      this.http.post('https://api.actibhealth.com/UsersV2/GET_Profile?token=', user)
+        .subscribe(Response => {
+          var data: any;
+          data = Response;
+          console.log(data);
+        });
+        */
+
+
+      this.saveToken("12345678");
       this.goToMain();
 
       /*

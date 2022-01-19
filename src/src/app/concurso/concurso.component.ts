@@ -1,6 +1,6 @@
 import { Component, ViewChild, OnInit, ElementRef, HostListener, AfterViewInit } from "@angular/core";
 import { NotifierService } from "angular-notifier";
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { trigger, transition, animate, style } from '@angular/animations'
 
 @Component({
@@ -9,8 +9,6 @@ import { trigger, transition, animate, style } from '@angular/animations'
   styleUrls: ['./concurso.component.scss'],
 
   animations: [
-
-
     trigger('slideInOut', [
 
       transition('center => left', [
@@ -33,28 +31,96 @@ import { trigger, transition, animate, style } from '@angular/animations'
     ])
   ]
 
-
-
-
 })
+
+
 export class ConcursoComponent implements OnInit {
 
-  questions = ["Pregunta 1", "Pregunta 2", "Pregunta 3"];
+  response = [
+    {
+      "_id": "61e096c269031244ab132465",
+      "index": 0,
+      "question": "Quien es batman?",
+      "options": [
+        "Clark Kent",
+        "Peter Parker",
+        "Bruce Wayne",
+        "Barry Allen"
+      ],
+      "answer": 2,
+      "points": 10,
+      "active": true,
+      "__v": 0
+    },
+    {
+      "_id": "61e096c269031244ab132465",
+      "index": 1,
+      "question": "Quien es batman?",
+      "options": [
+        "Clark Kent",
+        "Peter Parker",
+        "Bruce Wayne",
+        "Barry Allen"
+      ],
+      "answer": 3,
+      "points": 10,
+      "active": false,
+      "__v": 0
+    },
+    {
+      "_id": "61e096c269031244ab132465",
+      "index": 2,
+      "question": "Quien es batman?",
+      "options": [
+        "Clark Kent",
+        "Peter Parker",
+        "Bruce Wayne",
+        "Barry Allen"
+      ],
+      "answer": 1,
+      "points": 10,
+      "active": true,
+      "__v": 0
+    },
+
+  ];
+
+
+  questions = [];
+
+
   actualIndex = 0;
   longText = "The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan. A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting.";
   transition = "center";
   visible = true;
   start = false;
   showGanadores = false;
+  answers = [];
 
   constructor(public notifierService: NotifierService,
-    fb: FormBuilder) {
-
+  ) {
   }
 
   ngOnInit() {
     var body = document.getElementsByTagName("body")[0];
     body.classList.add("home-page");
+
+    for (var i = 0; i < this.response.length; i++) {
+
+      let form: FormGroup;
+      form = new FormGroup(
+        {
+          selected: new FormControl("", [Validators.required])
+        }
+      )
+
+      this.answers.push(form);
+
+      if (this.response[i].active) {
+        this.questions.push(this.response[i]);
+      }
+    }
+
   }
 
   ngOnDestroy() {
@@ -109,13 +175,18 @@ export class ConcursoComponent implements OnInit {
 
   }
 
-
   sendQuestions() {
+    let sendAnswers = [];
+    for (var i = 0; i < this.answers.length; i++) {
+      sendAnswers.push(this.answers[i].get("selected").value);
+    }
 
+    console.log(sendAnswers);
   }
 
   startQuestions() {
     this.start = true;
   }
+
 
 }
