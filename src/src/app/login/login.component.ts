@@ -6,11 +6,13 @@ import { CustomValidators } from 'ngx-custom-validators';
 
 //LOCAL STORAGE
 import { LocalStorageService } from 'ngx-webstorage';
-import { environment } from "../../environments/environment";
 
 //APIS
 import { HttpClient } from '@angular/common/http';
+import { environment } from "../../environments/environment";
 
+//ALERTS
+import Swal from 'sweetalert2'
 
 @Component({
   selector: "app-login",
@@ -74,11 +76,23 @@ export class LoginComponent implements OnInit {
           var data: any;
           data = Response;
           console.log(data);
+
+          if (data.token) {
+            this.saveToken(data.token);
+            this.goToMain();
+          } else {
+
+            Swal.fire({
+              title: 'Error!',
+              text: data.msg,
+              icon: 'error',
+              confirmButtonText: 'Ok'
+            })
+
+          }
+
         });
 
-
-      //this.saveToken("12345678");
-      //this.goToMain();
 
     }
   }

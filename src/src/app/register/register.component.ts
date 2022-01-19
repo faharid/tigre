@@ -4,6 +4,12 @@ import { NotifierService } from "angular-notifier";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ngx-custom-validators';
 
+//APIS
+import { HttpClient } from '@angular/common/http';
+import { environment } from "../../environments/environment";
+
+//ALERTS
+import Swal from 'sweetalert2'
 
 @Component({
   selector: "app-register",
@@ -22,7 +28,7 @@ export class RegisterComponent implements OnInit {
 
 
   constructor(public notifierService: NotifierService,
-    private router: Router,
+    private http: HttpClient,
     fb: FormBuilder) {
 
     this.notifier = notifierService;
@@ -75,12 +81,23 @@ export class RegisterComponent implements OnInit {
     if (this.valForm.valid) {
       const user = {
         email: this.valForm.value.email,
+        password: this.valForm.value.password,
         nombre: this.valForm.value.nombre,
         apellido: this.valForm.value.apellido,
         cedula: this.valForm.value.cedula,
         numero: this.valForm.value.numero,
-        password: this.valForm.value.password,
       };
+
+
+      this.http.put(environment.api_url + '/users', user)
+        .subscribe(Response => {
+          var data: any;
+          data = Response;
+          console.log(data);
+
+
+
+        });
 
 
 

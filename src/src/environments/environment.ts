@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   env: 'dev',
-  api_url: 'https://somostigres.herokuapp.com/api/prod',
+  api_url: 'https://somostigres.herokuapp.com/api/dev',
 
   firebase: {
     apiKey: 'AIzaSyAFje11X5AxCPtFMl2Lrx21C89h4rrdNG0',
