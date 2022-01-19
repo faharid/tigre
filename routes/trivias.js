@@ -52,6 +52,39 @@ router.get('/:index', async (req, res, next) => {
     }
 });
 
+//Validate Questions
+router.post('/validate/:userId', authorization, async (req, res, next) => {
+    try {
+        const result = await Result.getResultByUserId(req.params.userId)
+        if(!result){
+            const trivias = await Trivia.getTrivias()
+            if (trivias) {
+                let total = 0;
+                for (const [index, answer] of req.body.answers.entries()){
+                    if(trivias[index]?.answer === answer){
+                        total += +trivias[index]?.points
+                    }
+                }
+                await Result.createResult({
+                    userId: req.params.userId,
+                    answers: req.body.answers,
+                    total: total
+                })
+                res.json({
+                    total: total
+                })
+            } else {
+                res.status(201).json({ msg: 'Pregunta no encontrada' })
+            }
+        } else {
+            return res.json({ msg: 'La trivia ya fue contestada'});
+        }
+    } catch (error) {
+        console.error(error.toString())
+        return res.status(401).json({ msg: 'Error al validar los registro' })
+    }
+});
+
 //Validate Question
 router.post('/:index/validate/:userId', authorization, async (req, res, next) => {
     try {
@@ -101,20 +134,24 @@ router.post('/:index/validate/:userId', authorization, async (req, res, next) =>
 router.get('/:userId/results', authorization, async (req, res, next) => {
     try{
         const result = await Result.getResultByUserId(req.params.userId)
-        const trivias = await Trivia.getTrivias()
-        const answers = []
-        for (const [index, answer] of result.answers.entries()){
-            answers.push({
-                index: index,
-                question: trivias[index].question,
-                answer: trivias[index].options[answer],
-                status: trivias[index].answer === answer ? "Correcto" : "Incorrecto"
-            })
+        if (result){
+            const trivias = await Trivia.getTrivias()
+            const answers = []
+            for (const [index, answer] of result.answers.entries()){
+                answers.push({
+                    index: index,
+                    question: trivias[index].question,
+                    answer: trivias[index].options[answer],
+                    status: trivias[index].answer === answer ? "Correcto" : "Incorrecto"
+                })
+            }
+            return res.json({
+                answers: answers,
+                total: result?.total
+            }); 
+        } else {
+            return res.status(401).json({ msg: 'No se ha contestado la trivia' })
         }
-        return res.json({
-            answers: answers,
-            total: result?.total
-        });
     } catch (error) {
         console.error(error.toString())
         return res.status(401).json({ msg: 'Error al encontrar el resultado' })
