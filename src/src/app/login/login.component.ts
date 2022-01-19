@@ -1,12 +1,12 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
-import { BackendService } from "../services/backend.service";
 import { NotifierService } from "angular-notifier";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ngx-custom-validators';
 
 //LOCAL STORAGE
 import { LocalStorageService } from 'ngx-webstorage';
+import { environment } from "../../environments/environment";
 
 //APIS
 import { HttpClient } from '@angular/common/http';
@@ -28,8 +28,7 @@ export class LoginComponent implements OnInit {
   valForm: FormGroup;
 
 
-  constructor(private backendService: BackendService,
-    public notifierService: NotifierService,
+  constructor(public notifierService: NotifierService,
     private router: Router,
     fb: FormBuilder,
     private http: HttpClient,
@@ -64,34 +63,22 @@ export class LoginComponent implements OnInit {
     if (this.valForm.valid) {
 
       const user = {
-        email: this.valForm.value.email,
-        password: this.valForm.value.password,
+        email: this.valForm.get("email").value,
+        password: this.valForm.get("password").value
       };
 
+      console.log(user);
 
-      /*
-      this.http.post('https://api.actibhealth.com/UsersV2/GET_Profile?token=', user)
+      this.http.post(environment.api_url + '/users/login', user)
         .subscribe(Response => {
           var data: any;
           data = Response;
           console.log(data);
         });
-        */
 
 
-      this.saveToken("12345678");
-      this.goToMain();
-
-      /*
-      this.backendService.register(user).subscribe(data => {
-        if (data.success) { 
-          this.router.navigate(['/stream/' + data.id])
-        } else {
-          this.notifier.notify("error", "Error en el registro");
-        }
-      })
-      */
-
+      //this.saveToken("12345678");
+      //this.goToMain();
 
     }
   }

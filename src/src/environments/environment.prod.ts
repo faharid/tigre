@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   env: 'prod',
-  api_url: 'https://somostigresimparables.com/',
+  api_url: 'https://somostigresimparables.com/api/prod',
 
 
   firebase: {

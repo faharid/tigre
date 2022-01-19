@@ -26,6 +26,8 @@ export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('bottomRightLight') bottomRightLight: ElementRef;
   animatedActive = true;
 
+  homeRoutes = ["/home", "/login", "/register", "/exit"];
+
   constructor(
     public location: Location,
     private localStorage: LocalStorageService,
@@ -40,13 +42,9 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-    /*
-    if (this.getToken()) {
-      this.goToMain();
-    } else {
-      this.goToHome();
-    }
-    */
+
+    this.goToHome();
+
 
     timer(1000).subscribe(x => {
       this.animatedActive = false;
@@ -56,12 +54,16 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public ngAfterViewInit() {
 
-
     timer(1000).subscribe(x => {
 
       this.router.events
         .pipe(filter(event => event instanceof NavigationEnd))
         .subscribe((event: NavigationEnd) => {
+
+          if (!this.getToken() && !this.homeRoutes.includes(this.router.url)) {
+            this.goToHome();
+            return;
+          }
 
           this.animatedActive = true;
 

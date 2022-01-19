@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { Router } from '@angular/router';
-import { BackendService } from "../services/backend.service";
 import { NotifierService } from "angular-notifier";
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CustomValidators } from 'ngx-custom-validators';
@@ -22,8 +21,7 @@ export class RegisterComponent implements OnInit {
 
 
 
-  constructor(private backendService: BackendService,
-    public notifierService: NotifierService,
+  constructor(public notifierService: NotifierService,
     private router: Router,
     fb: FormBuilder) {
 
@@ -84,15 +82,7 @@ export class RegisterComponent implements OnInit {
         password: this.valForm.value.password,
       };
 
-      /*
-      this.backendService.register(user).subscribe(data => {
-        if (data.success) {
-          this.router.navigate(['/stream/' + data.id])
-        } else {
-          this.notifier.notify("error", "Error en el registro");
-        }
-      })
-      */
+
 
     }
   }
