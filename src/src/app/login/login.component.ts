@@ -8,7 +8,8 @@ import { CustomValidators } from 'ngx-custom-validators';
 import { LocalStorageService } from 'ngx-webstorage';
 
 //APIS
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, HttpRequest } from '@angular/common/http';
+import 'rxjs/add/operator/take'; 
 import { environment } from "../../environments/environment";
 
 //ALERTS
@@ -69,29 +70,57 @@ export class LoginComponent implements OnInit {
         password: this.valForm.get("password").value
       };
 
+
+      //this.saveToken("61e37ae788e3c5cc0370d981");
+      //this.goToMain();
+
       console.log(user);
 
+
+
+      this.http.post(environment.api_url + '/users/login',user)
+      .take(1) // optional: depending on your needs you could .take(x) this to just take a certain number of responses and then terminate the subscription in order to not have a "hot Observable" lying around
+      .subscribe(response =>{
+           console.log(response);
+         // if I am not mistaken "response.headers" should contain the "Set-Cookie" you are looking for 
+      });
+
+      /*
+      this.http
+        .post<any>(environment.api_url + '/users/login', user, { observe: 'response' })
+        .subscribe(resp => {
+          console.log(resp);
+          console.log(resp.headers.get('access_token'));
+        });
+*/
+
+      /*
       this.http.post(environment.api_url + '/users/login', user)
         .subscribe(Response => {
           var data: any;
           data = Response;
-          console.log(data);
 
-          if (data.token) {
-            this.saveToken(data.token);
-            this.goToMain();
-          } else {
+          console.log(data);
+          console.log(data.headers.get('X-Token'));
+
+          //this.saveToken(data.token);
+          //this.goToMain();
+
+        },
+          (error) => {
+            console.log(error);
 
             Swal.fire({
               title: 'Error!',
-              text: data.msg,
+              text: error.error.msg,
               icon: 'error',
               confirmButtonText: 'Ok'
             })
 
           }
 
-        });
+        );
+        */
 
 
     }
@@ -103,9 +132,6 @@ export class LoginComponent implements OnInit {
   }
 
   saveToken(token: string) {
-
-    console.log("HOLA");
-
     this.localStorage.store('token', token);
   }
 

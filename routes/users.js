@@ -59,16 +59,16 @@ router.patch('/:id', authorization, async (req, res, next) => {
         const user = await User.getUserById(req.params.id)
         if (!user) {
             res.status(201).json({ msg: "Usuario no encontrado" })
-        } else { 
+        } else {
             let newPassword
-            if (req.body.password) { 
-                if (!req.body.newPassword) return res.status(402).json({ msg: "Se requiere la contraseña nueva"})
+            if (req.body.password) {
+                if (!req.body.newPassword) return res.status(402).json({ msg: "Se requiere la contraseña nueva" })
                 const verified = await bcrypt.compare(req.body.password, user.password)
                 if (verified) {
                     newPassword = await bcrypt.hash(req.body.newPassword, 10)
                 } else {
-                    return res.status(402).json({ msg: "Contraseña incorrecta"})
-                } 
+                    return res.status(402).json({ msg: "Contraseña incorrecta" })
+                }
             }
 
             await User.updateUser({
@@ -106,11 +106,11 @@ router.post('/login', async (req, res, next) => {
         if (user) {
             const verified = await bcrypt.compare(req.body.password, user.password)
             if (verified) {
-                const token = jwt.sign({user}, process.env.SECRET);
+                const token = jwt.sign({ user }, process.env.SECRET);
                 return res.cookie("access_token", token, {
                     httpOnly: true,
                     secure: process.env.NODE_ENV === "prod",
-                }).status(200).json({ msg: "Autenticacion correcta" });
+                }).status(200).json({ msg: "Autenticacion correcta", access_token: token });
             } else {
                 return res.status(402).json({ msg: 'Contraseña incorrecta' })
             }
