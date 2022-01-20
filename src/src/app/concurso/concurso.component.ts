@@ -121,6 +121,8 @@ export class ConcursoComponent implements OnInit {
         var data: any;
         data = Response;
 
+        console.log(data);
+
         for (var i = 0; i < data.trivias.length; i++) {
           let form: FormGroup;
           form = new FormGroup(

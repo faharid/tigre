@@ -3,8 +3,9 @@
     <div class="animate__animated animate__fadeInDown" style="display: flex; flex-direction: column;">
 
 
-        <div style="display: flex; width: 100%; height: 35vw;">
-            <div style="background: black;  min-height: 450px; width: 100vw; margin: auto; position: relative;">
+        <div style="display: flex; width: 100%; height: 50vw; background: black; ">
+
+            <div style="width: 100vw; margin: auto; position: relative; height: 50vw;">
                 <div *ngFor="let callId of remoteCalls" [id]="callId" class="remote"
                     style="width: 100%; height: 100%; cursor: pointer; position: absolute;">
                 </div>
@@ -15,7 +16,8 @@
                 </div>
             </div>
 
-            <div style="width: 30%; background: hsla(0, 0%, 87%, 0.226);">
+            <div
+                style="  width: 35%; background: rgba(255, 255, 255, 0.212); position: absolute; height: 35%; bottom: 0px; border-top-right-radius: 15px; min-width: 400px;">
                 <div class="chatContainer" #chatContainer [scrollTop]="scrolltop"
                     style="height: 70%; overflow-y: scroll; scroll-behavior: smooth; ">
                     <div *ngFor="let message of messages | async">
@@ -25,14 +27,15 @@
                     </div>
                 </div>
 
-                <form [formGroup]="valForm" style="height: 15%;">
-                    <textarea cols="40" rows="5" formControlName="message" placeholder="Mensaje..."></textarea>
+                <form [formGroup]="valForm" style="height: 15%; display: flex; margin-top: 10px;">
+
+                    <textarea style="width: 65%; height: 38px; background: #ffffffc7; border: none;" cols="40" rows="5"
+                        formControlName="message" placeholder="Mensaje..."></textarea>
+
+                    <button class="whiteButton" style="width: 30%; padding: 5px; margin: auto; margin-top: auto; display: block; font-size: larger;
+                        margin-top: 5px; background: #acacac75;" (click)="sendMessage()">ENVIAR</button>
+
                 </form>
-
-
-                <button class="whiteButton"
-                    style="width: 80%; padding: 5px; margin: auto; margin-top: auto; display: block; margin-top: 10px;"
-                    (click)="sendMessage()">ENVIAR</button>
 
             </div>
 
@@ -60,7 +63,7 @@
     </div>
 </div>
 
-<div class="bottomSeats animate__animated animate__fadeInUp" style="margin-top: -5px; position: absolute;">
+<div class="bottomSeats animate__animated animate__fadeInUp" style="margin-top: 20px; position: absolute;">
 
 
     <div style="display: flex; flex-direction: row; position: absolute; width: 100%; top: 0px;  height: 100%;">

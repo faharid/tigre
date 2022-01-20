@@ -122,9 +122,9 @@ export class LiveComponent implements OnInit {
     //CHAT
     this.messages = this.chat.getMessages().valueChanges();
 
-
-
-
+    timer(3000).subscribe(x => {
+      this.scrolltop = this.chatContainer.nativeElement.scrollHeight;
+    });
 
   }
 
