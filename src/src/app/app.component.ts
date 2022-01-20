@@ -42,9 +42,11 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   ngOnInit() {
 
-
-    this.goToHome();
-
+    if (this.getToken() && this.router.url == "/") {
+      this.goToMain();
+    } else {
+      this.goToHome();
+    }
 
     timer(1000).subscribe(x => {
       this.animatedActive = false;
@@ -94,7 +96,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   goToMain(): void {
-    this.router.navigateByUrl("/live");
+    this.router.navigateByUrl("/line-up");
   }
 
   goToHome(): void {

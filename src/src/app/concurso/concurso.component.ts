@@ -120,10 +120,8 @@ export class ConcursoComponent implements OnInit {
       .subscribe(Response => {
         var data: any;
         data = Response;
-        console.log(data);
 
-        for (var i = 0; i < data.length; i++) {
-
+        for (var i = 0; i < data.trivias.length; i++) {
           let form: FormGroup;
           form = new FormGroup(
             {
@@ -132,10 +130,8 @@ export class ConcursoComponent implements OnInit {
           )
 
           this.answers.push(form);
+          this.questions.push(data.trivias[i]);
 
-          if (data[i].active) {
-            this.questions.push(data[i]);
-          }
         }
 
       });

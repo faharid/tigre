@@ -1,0 +1,42 @@
+table {
+    background: transparent;
+    border-collapse: unset;
+}
+
+.mat-column-schedule-title {
+    color: white;
+    font-weight: bold;
+    background: navy;
+    border-radius: 20px;
+    border-style: solid;
+    border-color: #007cff;
+    border-width: 2px;
+    display: block;
+    width: 80%;
+    margin: auto;
+    margin-top: 8%;
+    min-height: 50px;
+    text-align: center;
+    padding-top: 12px;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+}
+
+th .mat-column-schedule-title {
+    opacity: 0 !important;
+}
+
+.mat-cell {
+    color: white;
+    text-align: center;
+}
+
+.mat-header-cell {
+    font-weight: bold;
+    text-align: center;
+    color: aqua;
+}
+
+.mat-elevation-z8 {
+    box-shadow: none;
+}
