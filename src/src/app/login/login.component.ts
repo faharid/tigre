@@ -8,7 +8,8 @@ import { CustomValidators } from 'ngx-custom-validators';
 import { LocalStorageService } from 'ngx-webstorage';
 
 //APIS
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpResponse, HttpRequest } from '@angular/common/http';
+import 'rxjs/add/operator/take';
 import { environment } from "../../environments/environment";
 
 //ALERTS
@@ -69,29 +70,33 @@ export class LoginComponent implements OnInit {
         password: this.valForm.get("password").value
       };
 
-      console.log(user);
 
       this.http.post(environment.api_url + '/users/login', user)
         .subscribe(Response => {
           var data: any;
           data = Response;
-          console.log(data);
 
-          if (data.token) {
-            this.saveToken(data.token);
+          if (data.access_token) {
+            this.saveToken(data.access_token);
             this.goToMain();
           } else {
+            console.log(data.msg);
+          }
+
+        },
+          (error) => {
+            console.log(error);
 
             Swal.fire({
               title: 'Error!',
-              text: data.msg,
+              text: error.error.msg,
               icon: 'error',
               confirmButtonText: 'Ok'
             })
 
           }
 
-        });
+        );
 
 
     }
@@ -103,9 +108,6 @@ export class LoginComponent implements OnInit {
   }
 
   saveToken(token: string) {
-
-    console.log("HOLA");
-
     this.localStorage.store('token', token);
   }
 

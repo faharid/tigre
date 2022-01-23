@@ -203,10 +203,12 @@ img.ng-lazyloaded {
 
 .message {
     margin: 10px;
-    background: #09099b;
-    color: white;
+    background: #d0d0d070;
+    color: #202020;
     border-radius: 10px;
-    padding: 10px;
+    padding: 5px;
+    padding-right: 10px;
+    padding-left: 10px;
 }
 
 textarea {

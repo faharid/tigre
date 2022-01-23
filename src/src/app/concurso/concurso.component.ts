@@ -3,6 +3,16 @@ import { NotifierService } from "angular-notifier";
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { trigger, transition, animate, style } from '@angular/animations'
 
+//LOCAL STORAGE
+import { LocalStorageService } from 'ngx-webstorage';
+
+//APIS
+import { HttpClient } from '@angular/common/http';
+import { environment } from "../../environments/environment";
+
+//ALERTS
+import Swal from 'sweetalert2'
+
 @Component({
   selector: "app-concurso",
   templateUrl: './concurso.component.html',
@@ -98,6 +108,7 @@ export class ConcursoComponent implements OnInit {
   answers = [];
 
   constructor(public notifierService: NotifierService,
+    private http: HttpClient,
   ) {
   }
 
@@ -105,21 +116,27 @@ export class ConcursoComponent implements OnInit {
     var body = document.getElementsByTagName("body")[0];
     body.classList.add("home-page");
 
-    for (var i = 0; i < this.response.length; i++) {
+    this.http.get(environment.api_url + '/trivias')
+      .subscribe(Response => {
+        var data: any;
+        data = Response;
 
-      let form: FormGroup;
-      form = new FormGroup(
-        {
-          selected: new FormControl("", [Validators.required])
+        console.log(data);
+
+        for (var i = 0; i < data.trivias.length; i++) {
+          let form: FormGroup;
+          form = new FormGroup(
+            {
+              selected: new FormControl("", [Validators.required])
+            }
+          )
+
+          this.answers.push(form);
+          this.questions.push(data.trivias[i]);
+
         }
-      )
 
-      this.answers.push(form);
-
-      if (this.response[i].active) {
-        this.questions.push(this.response[i]);
-      }
-    }
+      });
 
   }
 

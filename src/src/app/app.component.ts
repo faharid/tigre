@@ -38,13 +38,15 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
 
-
-
   ngOnInit() {
 
+    if (!this.getToken() && !this.homeRoutes.includes(window.location.pathname)) {
+      this.goToHome();
+    }
 
-    this.goToHome();
-
+    if (this.getToken() && this.homeRoutes.includes(window.location.pathname)) {
+      this.goToMain();
+    }
 
     timer(1000).subscribe(x => {
       this.animatedActive = false;
@@ -54,13 +56,14 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   public ngAfterViewInit() {
 
+
     timer(1000).subscribe(x => {
 
       this.router.events
         .pipe(filter(event => event instanceof NavigationEnd))
         .subscribe((event: NavigationEnd) => {
 
-          if (!this.getToken() && !this.homeRoutes.includes(this.router.url)) {
+          if (!this.getToken() && !this.homeRoutes.includes(window.location.pathname)) {
             this.goToHome();
             return;
           }
@@ -94,7 +97,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   goToMain(): void {
-    this.router.navigateByUrl("/live");
+    this.router.navigateByUrl("/line-up");
   }
 
   goToHome(): void {

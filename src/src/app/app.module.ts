@@ -54,6 +54,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
 import { BoardComponent } from './board/board.component';
 import { LineUpComponent } from './line-up/line-up.component';
+import { MatTableModule } from '@angular/material/table';
 
 //CHAT
 import { ChatService } from './services/chat.service';
@@ -164,7 +165,8 @@ const agoraConfig: AgoraConfig = {
     AngularFireModule,
     AngularFireAuthModule,
     AngularFireDatabaseModule,
-    AngularFireModule.initializeApp(environment.firebase)
+    AngularFireModule.initializeApp(environment.firebase),
+    MatTableModule
   ],
   providers: [BackendService,
     AuthGuard, ChatService],
