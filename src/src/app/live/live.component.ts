@@ -227,12 +227,22 @@ export class LiveComponent implements OnInit {
 
       const id = this.getRemoteId(stream);
       this.streamIdPublico = id;
+
+
+      /*
       if (!this.remoteCallsPublico.length) {
         this.remoteCallsPublico.push(id);
         setTimeout(() => {
           stream.play(id)
         }, 1000);
       }
+      */
+
+      this.remoteCallsPublico.push(id);
+
+      setTimeout(() => {
+        stream.play(id)
+      }, 1000);
 
     });
 

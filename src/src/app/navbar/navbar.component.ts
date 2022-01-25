@@ -68,6 +68,7 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit() {
 
+    this.path = window.location.pathname;
 
     if (this.homeRoutes.includes(window.location.pathname)) {
       this.actualRouteSection = "Home";
@@ -81,18 +82,13 @@ export class NavbarComponent implements OnInit {
 
     }
 
-
     this.audio.src = "assets/audio/" + this.songs[this.actualSongIndex] + ".mp3";
     this.audio.load();
-
-
-
-
+    this.audio.volume = 0.10;
 
     for (var song of this.songs) {
       this.preloadAudio("assets/audio/" + song + ".mp3");
     }
-
 
   }
 
