@@ -8,6 +8,9 @@ import { CustomValidators } from 'ngx-custom-validators';
 import { HttpClient } from '@angular/common/http';
 import { environment } from "../../environments/environment";
 
+//LOCAL STORAGE
+import { LocalStorageService } from 'ngx-webstorage';
+
 //ALERTS
 import Swal from 'sweetalert2'
 
@@ -27,9 +30,13 @@ export class RegisterComponent implements OnInit {
 
 
 
-  constructor(public notifierService: NotifierService,
+  constructor(
+    private router: Router,
+    public notifierService: NotifierService,
     private http: HttpClient,
-    fb: FormBuilder) {
+    fb: FormBuilder,
+    private localStorage: LocalStorageService,
+  ) {
 
     this.notifier = notifierService;
     this.valForm = fb.group({
@@ -95,9 +102,43 @@ export class RegisterComponent implements OnInit {
           data = Response;
           console.log(data);
 
+          if (data.id) {
+
+            this.saveToken(data.id);
+            this.goToMain();
 
 
-        });
+            Swal.fire({
+              title: 'Bienvenido al evento',
+              text: data.msg,
+              icon: 'success',
+              confirmButtonText: 'Ok'
+            })
+
+          } else {
+
+            Swal.fire({
+              title: 'Mensaje',
+              text: data.msg,
+              icon: 'warning',
+              confirmButtonText: 'Ok'
+            })
+
+          }
+
+        },
+          (error) => {
+            console.log(error);
+
+            Swal.fire({
+              title: 'Error!',
+              text: error.error.msg,
+              icon: 'error',
+              confirmButtonText: 'Ok'
+            })
+
+          }
+        );
 
 
 
@@ -109,5 +150,14 @@ export class RegisterComponent implements OnInit {
     body.classList.remove("register-page");
   }
 
+
+  saveToken(token: string) {
+    this.localStorage.store('token', token);
+  }
+
+
+  goToMain(): void {
+    this.router.navigateByUrl("/line-up");
+  }
 
 }

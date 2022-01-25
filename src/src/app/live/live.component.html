@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" style="max-width: 85% !important;">
 
     <div class="animate__animated animate__fadeInDown" style="display: flex; flex-direction: column;">
 
@@ -17,7 +17,7 @@
             </div>
 
             <div
-                style="  width: 35%; background: rgba(255, 255, 255, 0.212); position: absolute; height: 35%; bottom: 0px; border-top-right-radius: 15px; min-width: 400px;">
+                style="  width: 35%; background: rgba(255, 255, 255, 0.212); position: absolute; height: 35%; bottom: 0px; border-top-right-radius: 15px; min-width: 400px; opacity: 60%;">
                 <div class="chatContainer" #chatContainer [scrollTop]="scrolltop"
                     style="height: 70%; overflow-y: scroll; scroll-behavior: smooth; ">
                     <div *ngFor="let message of messages | async">

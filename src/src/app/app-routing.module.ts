@@ -13,6 +13,7 @@ import { StreamComponent } from "./stream/stream.component";
 import { BroadcastComponent } from "./broadcast/broadcast.component";
 import { AuthGuard } from './services/guards/auth.guard';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
