@@ -215,6 +215,17 @@ export class LiveComponent implements OnInit {
       this.clientPublico.subscribe(stream, { audio: true, video: true }, err => {
         console.log('Subscribe stream failed', err);
       });
+
+      const id = this.getRemoteId(stream);
+      this.streamIdPublico = id;
+
+      if (!this.remoteCallsPublico.includes(id)) {
+        this.remoteCallsPublico.push(id);
+        setTimeout(() => {
+          stream.play(id)
+        }, 1000);
+      }
+
     });
 
     this.clientPublico.on(ClientEvent.RemoteStreamSubscribed, evt => {
@@ -228,8 +239,15 @@ export class LiveComponent implements OnInit {
       const id = this.getRemoteId(stream);
       this.streamIdPublico = id;
 
+      if (!this.remoteCallsPublico.includes(id)) {
+        this.remoteCallsPublico.push(id);
+        setTimeout(() => {
+          stream.play(id)
+        }, 1000);
+      }
 
-      /*
+
+            /*
       if (!this.remoteCallsPublico.length) {
         this.remoteCallsPublico.push(id);
         setTimeout(() => {
@@ -238,19 +256,13 @@ export class LiveComponent implements OnInit {
       }
       */
 
-      this.remoteCallsPublico.push(id);
-
-      setTimeout(() => {
-        stream.play(id)
-      }, 1000);
-
     });
 
     this.clientPublico.on(ClientEvent.RemoteStreamRemoved, evt => {
       const stream = evt.stream as Stream;
       if (stream) {
         stream.stop();
-        this.remoteCallsPublico = [];
+        this.remoteCallsPublico = this.remoteCallsPublico.filter(call => call !== `${this.getRemoteId(stream)}`);
         console.log(`Remote stream is removed ${stream.getId()}`);
         this.isPlayingPublico = false;
       }
