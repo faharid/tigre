@@ -72,7 +72,8 @@
 
 
         </mat-card-content>
-        <mat-card-actions style="text-align: center; display: block ruby;">
+        <mat-card-actions
+          style="text-align: center; display: flex; flex-direction: row; margin: auto; width: fit-content;">
 
           <button mat-button (click)="previousQuestion()" style="color: white; background: #327bbb;"
             [ngStyle]="{'opacity' : actualIndex == 0 ? 0.5 : 1}">ANTERIOR</button>

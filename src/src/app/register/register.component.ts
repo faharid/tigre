@@ -107,14 +107,6 @@ export class RegisterComponent implements OnInit {
             this.saveToken(data.id);
             this.goToMain();
 
-
-            Swal.fire({
-              title: 'Bienvenido al evento',
-              text: data.msg,
-              icon: 'success',
-              confirmButtonText: 'Ok'
-            })
-
           } else {
 
             Swal.fire({
