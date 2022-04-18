@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg navbar-transparent" color-on-scroll="300" id="navbar-top" style="display: flex;">
+
+  <div style="margin-left: 20px; margin-left: 20px; width: fit-content; display: block; display: flex;">
+
+    <img class="animate__animated animate__fadeIn" alt="" src="assets/img/logo.png"
+      style="height: 55px; object-fit: contain; width: auto; margin-left: 20px; margin-right: 20px;" />
+
+    <div *ngIf="path != '/live'" style=" display: flex; cursor: pointer;" (click)="playerClicked()">
+
+      <img *ngIf="audio.paused" class="animate__animated animate__fadeInLeft" alt="" src="assets/img/mute.png"
+        style="object-fit: contain; max-height: 30px; margin-top: 13px;" />
+
+      <img *ngIf="!audio.paused" class="animate__animated animate__fadeInLeft" alt="" src="assets/img/volume.png"
+        style="object-fit: contain; max-height: 30px; margin-top: 10px;" />
+
+
+      <h4 *ngIf="!audio.paused" class="animate__animated animate__fadeIn"
+        style="color: white; margin-left: 10px; margin-bottom: 0px; margin-top: 0px;"><b>Reproduciendo:</b>
+        <br>{{songs[actualSongIndex]}}
+      </h4>
+
+      <h4 *ngIf="audio.paused" class="animate__animated animate__fadeIn"
+        style="color: white; margin-left: 10px; margin-bottom: 0px; margin-top: 15px;">Haz click aquí para iniciar el
+        audio</h4>
+
+    </div>
+
+
+  </div>
+
+  <div class="container">
+
+    <ng-container *ngIf="!getToken()">
+      <a [routerLink]="['home']" [ngStyle]="{'font-weight' : path == '/home' ? 'bold' : 'normal'}">
+        INICIO
+      </a>
+
+      <a [routerLink]=" ['login']" [ngStyle]="{'font-weight' : path == '/login' ? 'bold' : 'normal'}">
+        INGRESAR
+      </a>
+
+      <a [routerLink]=" ['register']" [ngStyle]="{'font-weight' : path == '/register' ? 'bold' : 'normal'}">
+        REGISTRO
+      </a>
+    </ng-container>
+
+    <ng-container *ngIf="getToken()">
+      <a [routerLink]="['line-up']" [ngStyle]="{'font-weight' : path == '/line-up' ? 'bold' : 'normal'}">
+        LINE UP DEL DÍA
+      </a>
+
+      <a [routerLink]="['live']" [ngStyle]="{'font-weight' : path == '/live' ? 'bold' : 'normal'}">
+        ESCENARIO
+      </a>
+
+      <a [routerLink]="['board']" [ngStyle]="{'font-weight' : path == '/board' ? 'bold' : 'normal'}">
+        DEJA TU HUELLA
+      </a>
+
+      <a [routerLink]="['concurso']" [ngStyle]="{'font-weight' : path == '/concurso' ? 'bold' : 'normal'}">
+        CONCURSO
+      </a>
+
+      <a (click)="logout()" [ngStyle]="{'font-weight' : path == '/exit' ? 'bold' : 'normal'}">
+        SALIR
+      </a>
+
+    </ng-container>
+
+  </div>
+
+
+</nav>

@@ -1,0 +1,22 @@
+.container {
+    display: block;
+    text-align: end;
+    margin-right: 20px;
+    margin-left: auto;
+    width: max-content;
+}
+
+a {
+    margin-right: 30px;
+    color: white !important;
+    letter-spacing: 2px;
+    cursor: pointer;
+    font-weight: normal;
+}
+
+.navbar {
+    width: 100% !important;
+    display: inline;
+    width: fit-content;
+    margin-right: 0px;
+}

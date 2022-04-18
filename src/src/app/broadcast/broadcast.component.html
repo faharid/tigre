@@ -1,0 +1,110 @@
+<!--
+<div class="main background">
+  <div class="page-header">
+    <div id="remote-container"></div>
+
+    <div class="row content-center" style="margin-right: 0;
+                                           margin-left: 0;
+                                           width: 90vw;">
+      <div class="col-md-12">
+        <div class="title">
+          <h4>Configuración de la transmisión</h4>
+        </div>
+        <div class="row">
+          <div class="column">
+            <div class="dropdown" dropdown>
+              <button aria-expanded="false" aria-haspopup="true" class="btn btn-neutral btn-lg btn-liga dropdown-toggle"
+                data-toggle="dropdown" dropdownToggle id="navbarDropdownMenuLink">
+                {{camera.name}}
+              </button>
+              <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu" *dropdownMenu>
+                <div *ngFor="let item of data">
+                  <a class="dropdown-item" (click)="select(item)">
+                    {{item.name}}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="column">
+            <div class="dropdown" dropdown>
+              <button aria-expanded="false" aria-haspopup="true" class="btn btn-neutral btn-lg btn-liga dropdown-toggle"
+                data-toggle="dropdown" dropdownToggle id="navbarDropdownMenuLink">
+                {{quality.name}}
+              </button>
+              <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu" *dropdownMenu>
+                <div *ngFor="let item of data1">
+                  <a class="dropdown-item" (click)="select1(item)">
+                    {{item.name}}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-12" style="margin-top: 100px;">
+            <button class="btn btn-neutral btn-lg btn-liga" (click)="stream()">
+              INICIAR STREAM
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+-->
+
+
+
+<div class="container">
+
+  <div style="display: flex; flex-direction: column;">
+
+    <div id="remote-container" style="background: black; height: 35vw; min-height: 450px; width: 70vw; margin: auto;">
+    </div>
+
+
+    <div class="row" style="width: 100%; margin: auto;">
+
+      <div class="col-sm" style="display: flex;">
+
+        <div class="dropdown" dropdown style="width: 100%; margin: 10px;">
+          <button aria-expanded="false" aria-haspopup="true" class="whiteButton dropdown-toggle" style="width: 100%;"
+            data-toggle="dropdown" dropdownToggle id="navbarDropdownMenuLink">
+            {{camera.name}}
+          </button>
+          <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu" *dropdownMenu>
+            <div *ngFor="let item of data">
+              <a class="dropdown-item" (click)="select(item)">
+                {{item.name}}
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="col-sm" style="display: flex;">
+
+        <div class="dropdown" dropdown style="width: 100%; margin: 10px;">
+          <button aria-expanded="false" aria-haspopup="true" class="whiteButton dropdown-toggle" data-toggle="dropdown"
+            dropdownToggle id="navbarDropdownMenuLink" style="width: 100%;">
+            {{quality.name}}
+          </button>
+          <div aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu" *dropdownMenu>
+            <div *ngFor="let item of data1">
+              <a class="dropdown-item" (click)="select1(item)">
+                {{item.name}}
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <button class="whiteButton animate__animated animate__fadeIn" style="width: 100%; padding: 10px; margin: 10px;"
+      (click)="stream()">INICIAR STREAM</button>
+
+  </div>

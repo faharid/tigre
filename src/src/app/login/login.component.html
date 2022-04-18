@@ -1,0 +1,57 @@
+<div>
+
+
+    <div style="display: flex; flex-direction: column;">
+
+        <div class="row full-screen" style="max-width: 500px; width: 80%; margin: auto;">
+            <div class="col-sm" style="display: flex; flex-direction: column; margin-top: 20px;">
+
+                <div style="width: 90%; margin: auto; margin-top: 40px;">
+                    <form [formGroup]="valForm" (submit)="submitForm($event, valForm.value)" class="form" method="">
+                        <div class="card-body">
+
+
+                            <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
+                                <input class="form-control input-liga" placeholder="CORREO" type="text"
+                                    (blur)="focus = false" (focus)="focus = true" formControlName="email" />
+                                <div class="text-neutral text-liga"
+                                    *ngIf="valForm.controls['email'].hasError('required') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">
+                                    Campo Obligatorio</div>
+                                <div class="text-neutral text-liga"
+                                    *ngIf="valForm.controls['email'].hasError('email') && (valForm.controls['email'].dirty || valForm.controls['email'].touched)">
+                                    Correo electrónico no válido</div>
+                            </div>
+
+
+                            <div class="form-input" [ngClass]="{ 'input-group-focus': focus === true }">
+
+                                <input class="form-control input-liga" placeholder="CONTRASEÑA" type="password"
+                                    (blur)="focus = false" (focus)="focus = true" formControlName="password" />
+                                <div class="text-neutral text-liga"
+                                    *ngIf="valForm.controls['password'].hasError('required') && (valForm.controls['password'].dirty || valForm.controls['password'].touched)">
+                                    Campo Obligatorio</div>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+
+                <img alt="" src="assets/img/line.png"
+                    style="object-fit: contain; width: 100%; height: 20px; margin-bottom: 20px;" />
+
+
+                <form [formGroup]="valForm" (submit)="submitForm($event, valForm.value)" class="form-liga" method=""
+                    style="width: 80%;">
+                    <button class="whiteButton animate__animated animate__fadeIn" style="width: 100%; padding: 10px;"
+                        type="submit">INGRESAR</button>
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>

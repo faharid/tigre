@@ -1,0 +1,26 @@
+.canvas-container {
+    background-color: white;
+    width: fit-content;
+    margin: auto;
+    border-radius: 10px;
+    border-style: solid;
+    border-width: 25px;
+    border-color: cornflowerblue;
+}
+
+canvas {
+    background-color: transparent;
+    max-height: 500px;
+    z-index: 9999999;
+    position: relative;
+}
+
+@media only screen and (max-width: 900px) {
+    canvas {
+        //width: 100%;
+    }
+}
+
+ui-slot {
+    display: none !important;
+}

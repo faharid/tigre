@@ -1,0 +1,12 @@
+<div class="wrapper background">
+  <div class="page-header">
+    <div class="container">
+      <!-- <div [id]="localCallId" class="local"></div> -->
+      <div *ngFor="let callId of remoteCalls" [id]="callId" class="remote"></div>
+      <div class="content-center img-liga">
+        <img class="bg-blob bg-liga" [lazyLoad]="imageSrc1" />
+      </div>
+    </div>
+  </div>
+</div>
+
